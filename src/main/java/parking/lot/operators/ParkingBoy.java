@@ -13,6 +13,7 @@ public class ParkingBoy implements Operator {
         if(parkingLot.getCars().size() == parkingLot.getCapacity()){
             return "No Empty Spot";
         }
+        parkingLot.getCars().add(carToPark);
         return "Parking Successful!";
     }
 

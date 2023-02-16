@@ -19,6 +19,7 @@ public class ParkingBoyTest {
         Car car = new Car();
         String result = parkingBoy.park(car);
         assertEquals("Parking Successful!",result);
+        assertEquals(1L,smallParkingLot.cars.size());
     }
 
     @Test
