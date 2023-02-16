@@ -10,6 +10,9 @@ public class ParkingBoy implements Operator {
     ParkingLot parkingLot;
     @Override
     public String park(Car carToPark) {
+        if(parkingLot.getCars().size() == parkingLot.getCapacity()){
+            return "No Empty Spot";
+        }
         return "Parking Successful!";
     }
 
