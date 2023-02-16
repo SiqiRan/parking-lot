@@ -20,14 +20,18 @@ public class SmartParkingBoy implements Operator{
     public String park(Car carToPark) {
         ParkingLot leastFilled = parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getCapacity() - parkingLot.getCars().size()  > leastFilled.getCapacity() - leastFilled.getCars().size()){
+            if(parkingLot.getLeftPositions() > leastFilled.getLeftPositions()){
                 leastFilled = parkingLot;
             }
         }
-        if(leastFilled.getCars().size() == leastFilled.getCapacity()){
+        return parkCar(carToPark, leastFilled);
+    }
+
+    private static String parkCar(Car carToPark, ParkingLot parkingLotToUse) {
+        if(parkingLotToUse.getCars().size() == parkingLotToUse.getCapacity()){
             return "No Empty Spot";
         }
-        leastFilled.getCars().add(carToPark);
+        parkingLotToUse.getCars().add(carToPark);
         return "Parking Successful!";
     }
 

@@ -11,6 +11,8 @@ public class ParkingBoy implements Operator {
     @Override
     public String park(Car carToPark) {
         if(parkingLot.getCars().size() == parkingLot.getCapacity()){
+            parkingLot.setLeftPositions(parkingLot.getLeftPositions() - 1);
+            parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() + 1);
             return "No Empty Spot";
         }
         parkingLot.getCars().add(carToPark);
