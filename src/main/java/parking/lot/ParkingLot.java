@@ -2,6 +2,7 @@ package parking.lot;
 
 import lombok.Getter;
 import lombok.Setter;
+import parking.lot.operators.Operator;
 
 import java.util.List;
 
