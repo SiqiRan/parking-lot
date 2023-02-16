@@ -1,7 +1,6 @@
 package parking.lot;
 
 import lombok.AllArgsConstructor;
-import parking.lot.operators.Operator;
 
 import java.util.List;
 
@@ -9,5 +8,4 @@ import java.util.List;
 public class ParkingLot {
     Long capacity;
     List<Car> cars;
-    Operator operator;
 }

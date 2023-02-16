@@ -1,13 +1,15 @@
-package parking.lot;
+package parking.lot.operators;
 
 import lombok.AllArgsConstructor;
+import parking.lot.Car;
+import parking.lot.ParkingLot;
 import parking.lot.exceptions.CarNotFoundException;
-import parking.lot.operators.Operator;
 
 @AllArgsConstructor
 public class ParkingBoy implements Operator {
+    ParkingLot parkingLot;
     @Override
-    public String park(Car carToPar,ParkingLot parkingLot) {
+    public String park(Car carToPark) {
         return "Parking Successful!";
     }
 
