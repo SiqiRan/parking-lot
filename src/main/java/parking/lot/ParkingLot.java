@@ -1,13 +1,11 @@
 package parking.lot;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import parking.lot.operators.Operator;
 
 import java.util.List;
 
-@Getter
-@Setter
+@AllArgsConstructor
 public class ParkingLot {
     Long capacity;
     List<Car> cars;
