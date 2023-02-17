@@ -37,6 +37,9 @@ public class Valet {
         for (ParkingLot parkingLot : parkingLots) {
             result = parkingLot.getCars().stream().filter(car -> car.getId().equals(carId)).findFirst();
             if(result.isPresent()){
+                parkingLot.setLeftPositions(parkingLot.getLeftPositions() + 1);
+                parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() - 1);
+                parkingLot.getCars().remove(result.get());
                 break;
             }
         }
