@@ -1,22 +1,18 @@
 package parking.lot.operators;
 
-import lombok.AllArgsConstructor;
 import parking.lot.Car;
 import parking.lot.ParkingLot;
 import parking.lot.exceptions.CarNotFoundException;
 
-@AllArgsConstructor
-public class ParkingBoy implements Operator {
-    ParkingLot parkingLot;
+public class ParkingBoy extends Valet implements Operator {
+
+    public ParkingBoy(ParkingLot parkingLot) {
+        super(parkingLot);
+    }
+
     @Override
     public String park(Car carToPark) {
-        if(parkingLot.getCars().size() == parkingLot.getCapacity()){
-            parkingLot.setLeftPositions(parkingLot.getLeftPositions() - 1);
-            parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() + 1);
-            return "No Empty Spot";
-        }
-        parkingLot.getCars().add(carToPark);
-        return "Parking Successful!";
+       return parkCar(carToPark,parkingLot);
     }
 
     @Override
