@@ -13,17 +13,22 @@ public class SuperParkingBoy extends Valet implements Operator{
 
     @Override
     public String park(Car carToPark) {
+        return parkCar(carToPark,chooseParkingLot());
+    }
+
+    @Override
+    public Car pickUp(Long carId) throws CarNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ParkingLot chooseParkingLot() {
         ParkingLot highestUnoccupiedRate = parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
             if(parkingLot.getLeftPositions()/parkingLot.getCapacity() > highestUnoccupiedRate.getLeftPositions()/ parkingLot.getCapacity()){
                 highestUnoccupiedRate = parkingLot;
             }
         }
-        return parkCar(carToPark,highestUnoccupiedRate);
-    }
-
-    @Override
-    public Car pickUp(Long carId) throws CarNotFoundException {
-        return null;
+        return highestUnoccupiedRate;
     }
 }

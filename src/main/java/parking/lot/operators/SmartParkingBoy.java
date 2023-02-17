@@ -20,17 +20,22 @@ public class SmartParkingBoy extends Valet implements Operator{
 
     @Override
     public String park(Car carToPark) {
+        return parkCar(carToPark, chooseParkingLot());
+    }
+
+    @Override
+    public Car pickUp(Long carId) throws CarNotFoundException {
+        return null;
+    }
+
+    @Override
+    public ParkingLot chooseParkingLot() {
         ParkingLot leastFilled = this.parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
             if(parkingLot.getLeftPositions() > leastFilled.getLeftPositions()){
                 leastFilled = parkingLot;
             }
         }
-        return parkCar(carToPark, leastFilled);
-    }
-
-    @Override
-    public Car pickUp(Long carId) throws CarNotFoundException {
-        return null;
+        return leastFilled;
     }
 }

@@ -19,4 +19,10 @@ public class ParkingBoy extends Valet implements Operator {
     public Car pickUp(Long carId) throws CarNotFoundException {
         return null;
     }
+
+    @Override
+    public ParkingLot chooseParkingLot() {
+        return parkingLot;
+    }
+
 }
