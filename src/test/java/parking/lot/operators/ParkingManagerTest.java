@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ParkingManagerTest {
     @Test
     void should_park_car_in_the_parking_lot_with_most_unoccupied_spots(){
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10L,new ArrayList<>()));
+        ParkingBoy parkingBoy = new ParkingBoy(List.of(new ParkingLot(10L,new ArrayList<>())));
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(new ParkingLot(20L,new ArrayList<>())));
         ParkingManager parkingManager = new ParkingManager(List.of(new ParkingLot(30L,new ArrayList<>())),List.of(parkingBoy,smartParkingBoy));
         Car car = new Car(1L,1L);
@@ -20,6 +20,6 @@ class ParkingManagerTest {
         parkingManager.parkCar(car);
         parkingManager.assignPark(secondCar);
         assertEquals(1,parkingManager.getParkingLots().get(0).getCars().size());
-        assertEquals(1,parkingManager.getEmployees().get(0).getParkingLot().getCars().size());
+        assertEquals(1,parkingManager.getEmployees().get(0).getParkingLots().get(0).getCars().size());
     }
 }

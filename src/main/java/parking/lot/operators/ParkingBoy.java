@@ -1,23 +1,18 @@
 package parking.lot.operators;
 
-import parking.lot.Car;
 import parking.lot.ParkingLot;
-import parking.lot.exceptions.CarNotFoundException;
 
-public class ParkingBoy extends Valet implements Operator {
+import java.util.List;
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
+public class ParkingBoy extends Valet{
 
-    @Override
-    public Car pickUp(Long carId) throws CarNotFoundException {
-        return null;
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        super(parkingLots);
     }
 
     @Override
     public ParkingLot chooseParkingLot() {
-        return parkingLot;
+        return parkingLots.get(0);
     }
 
 }

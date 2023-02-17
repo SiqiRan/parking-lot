@@ -4,15 +4,16 @@ import lombok.Getter;
 import lombok.Setter;
 import parking.lot.Car;
 import parking.lot.ParkingLot;
+import parking.lot.exceptions.CarNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Getter
 @Setter
 public class Valet {
-     ParkingLot parkingLot;
-    List<ParkingLot> parkingLots;
+     List<ParkingLot> parkingLots;
 
      public String parkCar(Car carToPark) {
         ParkingLot parkingLotToUse = chooseParkingLot();
@@ -23,15 +24,22 @@ public class Valet {
         return "Parking Successful!";
     }
 
-    public Valet(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
-
     public Valet(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
     ParkingLot chooseParkingLot(){
          return this.parkingLots.get(0);
+    }
+
+    Optional<Car> pickUp(Long carId) throws CarNotFoundException{
+        Optional<Car> result = Optional.empty();
+        for (ParkingLot parkingLot : parkingLots) {
+            result = parkingLot.getCars().stream().filter(car -> car.getId().equals(carId)).findFirst();
+            if(result.isPresent()){
+                break;
+            }
+        }
+        return result;
     }
 }

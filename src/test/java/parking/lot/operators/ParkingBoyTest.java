@@ -15,7 +15,7 @@ public class ParkingBoyTest {
     void should_park_car_when_there_is_empty_spot(){
         ArrayList<Car> cars = new ArrayList<>();
         ParkingLot smallParkingLot = new ParkingLot(200L, cars);
-        Valet parkingBoy = new ParkingBoy(smallParkingLot);
+        Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
         String result = parkingBoy.parkCar(car);
         assertEquals("Parking Successful!",result);
@@ -26,7 +26,7 @@ public class ParkingBoyTest {
     void should_check_the_empty_spot_before_park(){
         ArrayList<Car> cars = new ArrayList<>(List.of(new Car(1L,1L)));
         ParkingLot smallParkingLot = new ParkingLot(1L, cars);
-        Valet parkingBoy = new ParkingBoy(smallParkingLot);
+        Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
         String result = parkingBoy.parkCar(car);
         assertEquals("No Empty Spot",result);
