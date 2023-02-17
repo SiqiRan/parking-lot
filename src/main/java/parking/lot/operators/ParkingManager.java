@@ -8,14 +8,14 @@ import parking.lot.exceptions.CarNotFoundException;
 
 import java.util.List;
 
-
 @Getter
 @Setter
-public class SmartParkingBoy extends Valet implements Operator{
+public class ParkingManager extends Valet implements Operator {
+    List<Valet> employees;
 
-
-    public SmartParkingBoy(List<ParkingLot> parkingLots) {
+    public ParkingManager(List<ParkingLot> parkingLots,List<Valet> employees) {
         super(parkingLots);
+        this.employees = employees;
     }
 
     @Override
@@ -25,12 +25,11 @@ public class SmartParkingBoy extends Valet implements Operator{
 
     @Override
     public ParkingLot chooseParkingLot() {
-        ParkingLot leastFilled = this.parkingLots.get(0);
-        for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getLeftPositions() > leastFilled.getLeftPositions()){
-                leastFilled = parkingLot;
-            }
-        }
-        return leastFilled;
+        return this.getParkingLots().get(0);
+    }
+
+    public void assignPark(Car carToAssignToPark) {
+        Valet employee = this.employees.get(0);
+        employee.parkCar(carToAssignToPark);
     }
 }

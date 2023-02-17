@@ -11,10 +11,11 @@ import java.util.List;
 @Getter
 @Setter
 public class Valet {
-    ParkingLot parkingLot;
+     ParkingLot parkingLot;
     List<ParkingLot> parkingLots;
 
-     String parkCar(Car carToPark, ParkingLot parkingLotToUse) {
+     public String parkCar(Car carToPark) {
+        ParkingLot parkingLotToUse = chooseParkingLot();
         if(parkingLotToUse.getCars().size() == parkingLotToUse.getCapacity()){
             return "No Empty Spot";
         }
@@ -28,5 +29,9 @@ public class Valet {
 
     public Valet(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
+    }
+
+    ParkingLot chooseParkingLot(){
+         return this.parkingLots.get(0);
     }
 }

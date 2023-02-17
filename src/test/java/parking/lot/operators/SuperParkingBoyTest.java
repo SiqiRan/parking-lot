@@ -18,7 +18,7 @@ class SuperParkingBoyTest {
         ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>(List.of(car)));
         SuperParkingBoy superParkingBoy = new SuperParkingBoy(List.of(smallParkingLot,bigParkingLot));
         Car secondCar = new Car(2L,2L);
-        superParkingBoy.park(secondCar);
+        superParkingBoy.parkCar(secondCar);
         assertEquals(1,superParkingBoy.getParkingLots().get(0).getCars().size());
     }
 }

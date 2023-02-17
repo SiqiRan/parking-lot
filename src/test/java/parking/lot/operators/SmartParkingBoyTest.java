@@ -20,7 +20,7 @@ class SmartParkingBoyTest {
         ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>());
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(smallParkingLot,bigParkingLot));
         Car car = new Car(1L,1L);
-        smartParkingBoy.park(car);
+        smartParkingBoy.parkCar(car);
         assertEquals(1,smartParkingBoy.getParkingLots().get(1).getCars().size());
     }
 }

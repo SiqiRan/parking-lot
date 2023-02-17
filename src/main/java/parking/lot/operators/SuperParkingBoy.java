@@ -12,11 +12,6 @@ public class SuperParkingBoy extends Valet implements Operator{
     }
 
     @Override
-    public String park(Car carToPark) {
-        return parkCar(carToPark,chooseParkingLot());
-    }
-
-    @Override
     public Car pickUp(Long carId) throws CarNotFoundException {
         return null;
     }
