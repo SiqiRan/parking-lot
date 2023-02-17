@@ -1,4 +1,4 @@
-package parking.lot;
+package parking.lot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

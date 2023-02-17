@@ -1,6 +1,6 @@
 package parking.lot.operators;
 
-import parking.lot.ParkingLot;
+import parking.lot.entity.ParkingLot;
 
 import java.util.List;
 

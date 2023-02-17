@@ -3,8 +3,8 @@ package parking.lot.operators;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.jupiter.api.Test;
-import parking.lot.Car;
-import parking.lot.ParkingLot;
+import parking.lot.entity.Car;
+import parking.lot.entity.ParkingLot;
 
 import java.util.ArrayList;
 import java.util.List;
