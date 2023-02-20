@@ -21,6 +21,9 @@ public class Valet {
             return "No Empty Spot";
         }
         parkingLotToUse.getCars().add(carToPark);
+        parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
+        parkingLotToUse.setOccupationRate((double) (parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
+
         return "Parking Successful!";
     }
 

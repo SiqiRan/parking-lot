@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class SmartParkingBoyTest {
     @Test
     void should_park_the_car_in_least_filled_parking_lot(){
-        ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>());
-        ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>());
+        ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>(),"small parking lot");
+        ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>(),"big parking lot");
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(smallParkingLot,bigParkingLot));
         Car car = new Car(1L,1L);
         smartParkingBoy.parkCar(car);

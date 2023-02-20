@@ -7,11 +7,12 @@ import parking.lot.entity.ParkingLot;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-class ParkingManagerTest {
+class ParkingDirectorTest {
+
     @Test
-    void should_park_car_in_the_parking_lot_with_most_unoccupied_spots(){
+    void should_get_required_information_in_a_parking_table(){
         ParkingBoy parkingBoy = new ParkingBoy(List.of(new ParkingLot(10L,new ArrayList<>(),"test parking lot")));
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(new ParkingLot(20L,new ArrayList<>(),"another parking lot")));
         ParkingManager parkingManager = new ParkingManager(List.of(new ParkingLot(30L,new ArrayList<>(),"other parking lot")),List.of(parkingBoy,smartParkingBoy));
@@ -19,7 +20,9 @@ class ParkingManagerTest {
         Car secondCar = new Car(2L,2L);
         parkingManager.parkCar(car);
         parkingManager.assignPark(secondCar);
-        assertEquals(1,parkingManager.getParkingLots().get(0).getCars().size());
-        assertEquals(1,parkingManager.getSubordinates().get(0).getParkingLots().get(0).getCars().size());
+        ParkingDirector parkingDirector = new ParkingDirector(new ArrayList<>(List.of(parkingBoy,smartParkingBoy,parkingManager)));
+        ParkingTable parkingTable = parkingDirector.getParkingTable();
+        assertEquals(1,parkingTable.getParkingLots().get(0).getOccupiedPositions());
+        assertEquals(1,parkingTable.getParkingLots().get(2).getOccupiedPositions());
     }
 }

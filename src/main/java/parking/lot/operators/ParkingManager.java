@@ -10,11 +10,11 @@ import java.util.List;
 @Getter
 @Setter
 public class ParkingManager extends Valet{
-    List<Valet> employees;
+    List<Valet> subordinates;
 
-    public ParkingManager(List<ParkingLot> parkingLots,List<Valet> employees) {
+    public ParkingManager(List<ParkingLot> parkingLots,List<Valet> subordinates) {
         super(parkingLots);
-        this.employees = employees;
+        this.subordinates = subordinates;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class ParkingManager extends Valet{
     }
 
     public void assignPark(Car carToAssignToPark) {
-        Valet employee = this.employees.get(0);
+        Valet employee = this.subordinates.get(0);
         employee.parkCar(carToAssignToPark);
     }
 }

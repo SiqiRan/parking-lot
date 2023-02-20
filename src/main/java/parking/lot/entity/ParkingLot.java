@@ -11,11 +11,14 @@ public class ParkingLot {
     List<Car> cars;
     Long leftPositions;
     Long occupiedPositions;
-
-    public ParkingLot(Long capacity, List<Car> cars) {
+    Double occupationRate;
+    String name;
+    public ParkingLot(Long capacity, List<Car> cars, String name) {
         this.capacity = capacity;
         this.cars = cars;
+        this.name = name;
         this.leftPositions = capacity - cars.size();
         this.occupiedPositions = (long) cars.size();
+        this.occupationRate = 0.0;
     }
 }
