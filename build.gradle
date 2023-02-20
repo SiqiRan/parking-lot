@@ -22,6 +22,8 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation 'org.springframework.boot:spring-boot-starter:2.7.0'
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
