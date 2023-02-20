@@ -14,6 +14,7 @@ public class ParkingTable {
     private List<Valet> valets;
 
     public ParkingTable(List<Valet> valets){
+        this.valets = valets;
         this.parkingLots = new ArrayList<>();
         for (Valet valet : valets) {
             parkingLots.addAll(valet.getParkingLots());

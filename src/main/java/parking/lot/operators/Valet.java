@@ -22,7 +22,7 @@ public class Valet {
         }
         parkingLotToUse.getCars().add(carToPark);
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
-        parkingLotToUse.setOccupationRate((double) (parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
+        parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
 
         return "Parking Successful!";
     }
@@ -42,6 +42,7 @@ public class Valet {
             if(result.isPresent()){
                 parkingLot.setLeftPositions(parkingLot.getLeftPositions() + 1);
                 parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() - 1);
+                parkingLot.setOccupationRate((double) ((float)parkingLot.getOccupiedPositions()/parkingLot.getCapacity()));
                 parkingLot.getCars().remove(result.get());
                 break;
             }
