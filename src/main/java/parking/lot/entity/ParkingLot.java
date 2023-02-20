@@ -9,7 +9,6 @@ import java.util.List;
 public class ParkingLot {
     Long capacity;
     List<Car> cars;
-    Long leftPositions;
     Long occupiedPositions;
     Double occupationRate;
     String name;
@@ -17,7 +16,6 @@ public class ParkingLot {
         this.capacity = capacity;
         this.cars = cars;
         this.name = name;
-        this.leftPositions = capacity - cars.size();
         this.occupiedPositions = (long) cars.size();
         this.occupationRate = 0.0;
     }

@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 public class SmartParkingBoy extends Valet {
 
-
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }
@@ -20,7 +19,9 @@ public class SmartParkingBoy extends Valet {
     public ParkingLot chooseParkingLot() {
         ParkingLot leastFilled = this.parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getLeftPositions() > leastFilled.getLeftPositions()){
+            long leftPositions = parkingLot.getCapacity() - parkingLot.getOccupiedPositions();
+            long leastLeftPositions = leastFilled.getCapacity() - leastFilled.getOccupiedPositions();
+            if(leftPositions > leastLeftPositions){
                 leastFilled = parkingLot;
             }
         }
