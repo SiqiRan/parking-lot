@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ParkingBoyTest {
+class ParkingBoyTest {
     @Test
     void should_park_car_when_there_is_empty_spot(){
         ArrayList<Car> cars = new ArrayList<>();
