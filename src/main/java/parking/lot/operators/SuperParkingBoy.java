@@ -14,7 +14,7 @@ public class SuperParkingBoy extends Valet {
     public ParkingLot chooseParkingLot() {
         ParkingLot highestUnoccupiedRate = parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getOccupationRate() > parkingLot.getOccupationRate()){
+            if(parkingLot.getOccupationRate() >highestUnoccupiedRate.getOccupationRate()){
                 highestUnoccupiedRate = parkingLot;
             }
         }
