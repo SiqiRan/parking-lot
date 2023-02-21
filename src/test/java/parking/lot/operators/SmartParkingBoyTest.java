@@ -1,7 +1,5 @@
 package parking.lot.operators;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.jupiter.api.Test;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
@@ -11,8 +9,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Getter
-@Setter
 class SmartParkingBoyTest {
     @Test
     void should_park_the_car_in_least_filled_parking_lot(){

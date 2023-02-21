@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PickUpCarTest {
+class PickUpCarTest {
     @Test
     void should_qet_car_by_id() throws CarNotFoundException {
         Car car = new Car(1L,1L);
