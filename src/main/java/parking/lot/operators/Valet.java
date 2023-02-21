@@ -15,16 +15,12 @@ import java.util.Optional;
 public class Valet {
      List<ParkingLot> parkingLots;
 
-     public String parkCar(Car carToPark) {
+     public Car parkCar(Car carToPark) {
         ParkingLot parkingLotToUse = chooseParkingLot();
-        if(parkingLotToUse.getCars().size() == parkingLotToUse.getCapacity()){
-            return "No Empty Spot";
-        }
         parkingLotToUse.getCars().add(carToPark);
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
-
-        return "Parking Successful!";
+        return carToPark;
     }
 
     public Valet(List<ParkingLot> parkingLots) {

@@ -17,6 +17,9 @@ public class SuperParkingBoy extends Valet {
                 highestUnoccupiedRate = parkingLot;
             }
         }
+        if(highestUnoccupiedRate.getOccupationRate() == 1){
+            throw new FullyOccupiedException("No Empty Spot");
+        }
         return highestUnoccupiedRate;
     }
 }

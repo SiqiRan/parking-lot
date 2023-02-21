@@ -38,7 +38,7 @@ public class ParkingDataBase {
         ParkingDirector parkingDirector = new ParkingDirector(List.of(parkingBoy,smartParkingBoy,parkingManager));
     }
 
-    public String park(Car car){
+    public Car park(Car car){
         return parkingManager.parkCar(car);
     }
 }

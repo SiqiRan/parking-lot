@@ -22,12 +22,19 @@ public class ParkingManager extends Valet{
         return this.getParkingLots().get(0);
     }
 
-    public String assignPark(Car carToAssignToPark) {
+    public Car assignPark(Car carToAssignToPark) {
+        boolean parkSuccessful = false;
         for (Valet subordinate : subordinates) {
-            if(subordinate.parkCar(carToAssignToPark).equals("Parking Successful!")){
-                return "Parking Successful";
+            try {
+                subordinate.parkCar(carToAssignToPark);
+                parkSuccessful = true;
+            }catch (FullyOccupiedException e){
+                continue;
             }
         }
-        return "No Empty Spot";
+        if(parkSuccessful){
+            return carToAssignToPark;
+        }
+        throw new FullyOccupiedException("All parking lots are occupied");
     }
 }

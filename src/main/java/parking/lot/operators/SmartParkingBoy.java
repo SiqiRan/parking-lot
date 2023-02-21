@@ -25,6 +25,9 @@ public class SmartParkingBoy extends Valet {
                 leastFilled = parkingLot;
             }
         }
+        if(leastFilled.getOccupationRate() == 1){
+            throw new FullyOccupiedException("No Empty Spot");
+        }
         return leastFilled;
     }
 }

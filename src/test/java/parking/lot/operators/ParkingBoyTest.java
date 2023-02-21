@@ -17,8 +17,8 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(200L, cars, "smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
-        String result = parkingBoy.parkCar(car);
-        assertEquals("Parking Successful!",result);
+        Car result = parkingBoy.parkCar(car);
+        assertEquals(car,result);
         assertEquals(1L,smallParkingLot.getCars().size());
     }
 
@@ -28,7 +28,7 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
-        String result = parkingBoy.parkCar(car);
-        assertEquals("No Empty Spot",result);
+        Car result = parkingBoy.parkCar(car);
+        assertEquals(car,result);
     }
 }
