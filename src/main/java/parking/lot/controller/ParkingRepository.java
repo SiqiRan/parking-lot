@@ -7,12 +7,16 @@ import parking.lot.entity.Car;
 @Repository
 public class ParkingRepository {
 
-    ParkingDataBase parkingDataBase = ParkingDataBase.getInstance();
+
+    ParkingDataBase parkingDataBase;
+    private ParkingRepository(){
+        parkingDataBase = ParkingDataBase.getInstance();
+    }
     public Car getCarById(Long carId) {
-        return new Car(1L,1L);
+        return parkingDataBase.pickUp(carId);
     }
 
     public Car parkCar(Car car) {
-        return new Car(2L, 2L);
+        return parkingDataBase.park(car);
     }
 }

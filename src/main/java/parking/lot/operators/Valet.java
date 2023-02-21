@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
-import parking.lot.exceptions.CarNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +30,7 @@ public class Valet {
          return this.parkingLots.get(0);
     }
 
-    Optional<Car> pickUp(Long carId) throws CarNotFoundException{
+    public Optional<Car> pickUp(Long carId){
         Optional<Car> result = Optional.empty();
         for (ParkingLot parkingLot : parkingLots) {
             result = parkingLot.getCars().stream().filter(car -> car.getId().equals(carId)).findFirst();
