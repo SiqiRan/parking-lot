@@ -1,6 +1,7 @@
 package parking.lot.operators;
 
 import parking.lot.entity.ParkingLot;
+import parking.lot.exceptions.FullyOccupiedException;
 
 import java.util.List;
 

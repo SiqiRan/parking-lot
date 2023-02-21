@@ -3,6 +3,7 @@ package parking.lot.operators;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.ParkingLot;
+import parking.lot.exceptions.FullyOccupiedException;
 
 import java.util.List;
 

@@ -5,6 +5,7 @@ import lombok.Setter;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 import parking.lot.exceptions.CarNotFoundException;
+import parking.lot.exceptions.FullyOccupiedException;
 
 import java.util.List;
 import java.util.Optional;

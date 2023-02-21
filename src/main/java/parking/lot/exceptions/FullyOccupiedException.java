@@ -1,7 +1,7 @@
-package parking.lot.operators;
+package parking.lot.exceptions;
 
 public class FullyOccupiedException extends RuntimeException {
-    FullyOccupiedException(String message){
+    public FullyOccupiedException(String message){
         super(message);
     }
 }
