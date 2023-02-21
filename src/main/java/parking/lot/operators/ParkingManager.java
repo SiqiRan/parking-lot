@@ -22,8 +22,12 @@ public class ParkingManager extends Valet{
         return this.getParkingLots().get(0);
     }
 
-    public void assignPark(Car carToAssignToPark) {
-        Valet employee = this.subordinates.get(0);
-        employee.parkCar(carToAssignToPark);
+    public String assignPark(Car carToAssignToPark) {
+        for (Valet subordinate : subordinates) {
+            if(subordinate.parkCar(carToAssignToPark).equals("Parking Successful!")){
+                return "Parking Successful";
+            }
+        }
+        return "No Empty Spot";
     }
 }

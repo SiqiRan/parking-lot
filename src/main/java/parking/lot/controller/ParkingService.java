@@ -12,4 +12,8 @@ public class ParkingService {
     public Car getCarById(Long carId) {
         return parkingRepository.getCarById(carId);
     }
+
+    public Car parkCar(Car car) {
+        return parkingRepository.parkCar(car);
+    }
 }

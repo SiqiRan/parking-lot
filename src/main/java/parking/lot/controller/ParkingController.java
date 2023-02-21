@@ -17,5 +17,11 @@ public class ParkingController {
     public Car getCarById(@PathVariable Long id){
         return parkingService.getCarById(id);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Car postCar(@RequestBody Car car){
+        return parkingService.parkCar(car);
+    }
 }
 
