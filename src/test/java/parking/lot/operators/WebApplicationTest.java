@@ -7,7 +7,6 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-
 public class WebApplicationTest {
 
 }

@@ -1,15 +1,15 @@
 package parking.lot.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import parking.lot.entity.Car;
 
 @RestController
 @RequestMapping("/parkingLot")
+@AllArgsConstructor
 public class ParkingController {
 
-    @Autowired
     ParkingService parkingService;
 
     @GetMapping("/{id}")

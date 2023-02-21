@@ -1,13 +1,13 @@
 package parking.lot.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import parking.lot.entity.Car;
 
 @Service
+@AllArgsConstructor
 public class ParkingService {
 
-    @Autowired
     ParkingRepository parkingRepository;
     public Car getCarById(Long carId) {
         return parkingRepository.getCarById(carId);
