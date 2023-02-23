@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import parking.lot.entity.Car;
 
 class APIControllerTest extends WebApplicationTest{
     @Autowired
@@ -22,17 +23,19 @@ class APIControllerTest extends WebApplicationTest{
                        "    }");
     }
 
-//    @Test
-//    void shouldParkACarWhenGivenEnoughEmptyPositions() throws Exception {
-//        Car car = new Car(2L,2L);
-//        mockMvc.perform(MockMvcRequestBuilders
-//                        .post("/parkingLot")
-//                        .content(new ObjectMapper().writeValueAsString(car))
-//                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-//                )
-//                .andDo(print())
-//                .andExpect(status().isCreated())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(2));
-//    }
+    @Test
+    void shouldParkACarWhenGivenEnoughEmptyPositions() throws Exception {
+        Car car = new Car(6L,6L);
+        webTestClient
+                .post()
+                .uri("http://localhost:8080/parkingLot")
+                .bodyValue(car)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody().json("{\n" +
+                        "      \"id\": 6,\n" +
+                        "      \"ownerId\": 6\n" +
+                        "    }");
+    }
 }

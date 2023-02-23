@@ -16,4 +16,14 @@ public class ParkingReactiveRepository {
                 .retrieve()
                 .bodyToMono(Car.class);
     }
+
+    public Mono<Car> parkCar(Car car) {
+        return WebClient.builder()
+                .baseUrl("http://localhost:3002/parkinglot/")
+                .build()
+                .post()
+                .bodyValue(car)
+                .retrieve()
+                .bodyToMono(Car.class);
+    }
 }

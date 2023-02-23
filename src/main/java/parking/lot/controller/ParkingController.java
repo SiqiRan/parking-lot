@@ -23,8 +23,8 @@ public class ParkingController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Car postCar(@RequestBody Car car){
-        return parkingService.parkCar(car);
+    public Mono<Car> postCar(@RequestBody Car car){
+        return parkingReactiveService.parkCar(car);
     }
 }
 

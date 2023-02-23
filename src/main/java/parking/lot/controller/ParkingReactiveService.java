@@ -13,4 +13,7 @@ public class ParkingReactiveService {
         return parkingReactiveRepository.getCarById(id);
     }
 
+    public Mono<Car> parkCar(Car car) {
+        return parkingReactiveRepository.parkCar(car);
+    }
 }
