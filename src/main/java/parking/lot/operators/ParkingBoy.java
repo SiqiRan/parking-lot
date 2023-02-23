@@ -1,8 +1,7 @@
 package parking.lot.operators;
 
+import io.vavr.collection.List;
 import parking.lot.entity.ParkingLot;
-
-import java.util.List;
 
 public class ParkingBoy extends Valet{
 

@@ -5,8 +5,7 @@ import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 import parking.lot.exceptions.CarNotFoundException;
 
-import java.util.ArrayList;
-import java.util.List;
+import io.vavr.collection.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,7 +13,7 @@ class PickUpCarTest {
     @Test
     void should_qet_car_by_id() throws CarNotFoundException {
         Car car = new Car(1L,"car",1L);
-        ParkingLot smallParkingLot = new ParkingLot(200L, new ArrayList<>(List.of(car)),"small parking lot");
+        ParkingLot smallParkingLot = new ParkingLot(200L, List.of(car),"small parking lot");
         ParkingBoy parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         assertEquals(car, parkingBoy.pickUp(1L).get());
     }
@@ -23,7 +22,7 @@ class PickUpCarTest {
     void should_pick_up_the_car() throws CarNotFoundException{
         Car car = new Car(1L,"car",1L);
         Car secondCar = new Car(2L,"car two",2L);
-        ParkingLot smallParkingLot = new ParkingLot(200L, new ArrayList<>(List.of(car)),"small parking lot");
+        ParkingLot smallParkingLot = new ParkingLot(200L, List.of(car),"small parking lot");
         ParkingBoy parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         parkingBoy.parkCar(secondCar);
         parkingBoy.pickUp(2L);

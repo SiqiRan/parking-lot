@@ -1,11 +1,11 @@
 package parking.lot.operators;
 
+import io.vavr.collection.List;
+import io.vavr.control.Option;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
-
-import java.util.List;
 import java.util.Optional;
 
 
@@ -13,7 +13,6 @@ import java.util.Optional;
 @Setter
 public class Valet {
      List<ParkingLot> parkingLots;
-
     public Valet(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
@@ -23,7 +22,7 @@ public class Valet {
         if(!checkIfAvailable(parkingLotToUse)){
             return Optional.empty();
         }
-        parkingLotToUse.getCars().add(carToPark);
+        parkingLotToUse.setCars(parkingLotToUse.getCars().append(carToPark));
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
         return Optional.of(carToPark);
@@ -33,14 +32,14 @@ public class Valet {
          return this.parkingLots.get(0);
     }
 
-    public Optional<Car> pickUp(Long carId){
-        Optional<Car> result = Optional.empty();
+    public Option<Car> pickUp(Long carId){
+        Option<Car> result = Option.none();
         for (ParkingLot parkingLot : parkingLots) {
-            result = parkingLot.getCars().stream().filter(car -> car.getCarId().equals(carId)).findFirst();
-            if(result.isPresent()){
+            result = parkingLot.getCars().find(car -> car.getCarId().equals(carId));
+            if(result.isDefined()){
                 parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() - 1);
                 parkingLot.setOccupationRate((double) ((float)parkingLot.getOccupiedPositions()/parkingLot.getCapacity()));
-                parkingLot.getCars().remove(result.get());
+                parkingLot.setCars(parkingLot.getCars().remove(result.get()));
                 break;
             }
         }

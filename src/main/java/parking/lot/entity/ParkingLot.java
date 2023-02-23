@@ -3,7 +3,7 @@ package parking.lot.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import io.vavr.collection.List;
 @Setter
 @Getter
 public class ParkingLot {

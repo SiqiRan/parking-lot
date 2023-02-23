@@ -1,14 +1,13 @@
 package parking.lot.operators;
 
+import io.vavr.collection.List;
+import io.vavr.control.Option;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 import parking.lot.exceptions.CarNotFoundException;
 import parking.lot.exceptions.FullyOccupiedException;
-
-import java.util.List;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -36,14 +35,14 @@ public class ParkingManager extends Valet{
     }
 
     public Car pickUpWithSubordinates(Long carId){
-        Optional<Car> pickUpResult = this.pickUp(carId);
-        if(pickUpResult.isPresent()){
+        Option<Car> pickUpResult = this.pickUp(carId);
+        if(pickUpResult.isDefined()){
             return pickUpResult.get();
         }
         else {
             for (Valet subordinate : subordinates) {
-                Optional<Car> subOrdinatePickUpResult = subordinate.pickUp(carId);
-                if(subOrdinatePickUpResult.isPresent()){
+                Option<Car> subOrdinatePickUpResult = subordinate.pickUp(carId);
+                if(subOrdinatePickUpResult.isDefined()){
                     return subOrdinatePickUpResult.get();
                 }
             }

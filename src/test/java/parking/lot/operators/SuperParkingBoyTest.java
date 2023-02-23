@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 
-import java.util.ArrayList;
-import java.util.List;
+import io.vavr.collection.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,9 +12,9 @@ class SuperParkingBoyTest {
 
     @Test
     void should_park_car_in_the_parking_lot_with_most_unoccupied_spots(){
-        ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>(),"small parking lot");
+        ParkingLot smallParkingLot = new ParkingLot(10L,List.empty(),"small parking lot");
         Car car = new Car(1L,"car",1L);
-        ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>(List.of(car)),"small parking lot");
+        ParkingLot bigParkingLot = new ParkingLot(20L,List.of(car),"small parking lot");
         SuperParkingBoy superParkingBoy = new SuperParkingBoy(List.of(smallParkingLot,bigParkingLot));
         Car secondCar = new Car(2L,"car two",2L);
         superParkingBoy.parkCar(secondCar);

@@ -1,11 +1,9 @@
 package parking.lot.operators;
 
+import io.vavr.collection.List;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.ParkingLot;
-
-import java.util.List;
-
 
 @Getter
 @Setter

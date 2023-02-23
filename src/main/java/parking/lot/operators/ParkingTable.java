@@ -1,11 +1,9 @@
 package parking.lot.operators;
 
+import io.vavr.collection.List;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.ParkingLot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,9 +13,9 @@ public class ParkingTable {
 
     public ParkingTable(List<Valet> valets){
         this.valets = valets;
-        this.parkingLots = new ArrayList<>();
+        this.parkingLots = List.empty();
         for (Valet valet : valets) {
-            parkingLots.addAll(valet.getParkingLots());
+            parkingLots = parkingLots.appendAll(valet.getParkingLots());
         }
     }
 
