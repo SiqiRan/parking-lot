@@ -6,10 +6,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
+import parking.lot.exceptions.FullyOccupiedException;
 import parking.lot.operators.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Scope("singleton")
@@ -40,7 +42,11 @@ public class ParkingDataBase {
     }
 
     public Car park(Car car){
-        return parkingManager.parkCar(car);
+        Optional<Car> parking = parkingManager.parkCar(car);
+        if(parking.isPresent()){
+            return parking.get();
+        }
+        throw new FullyOccupiedException("Sorry, no available position now!");
     }
 
     public Car pickUp(long carId){

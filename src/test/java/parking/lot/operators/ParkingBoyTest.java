@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParkingBoyTest {
     @Test
@@ -17,7 +18,7 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(200L, cars, "smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
-        Car result = parkingBoy.parkCar(car);
+        Car result = parkingBoy.parkCar(car).get();
         assertEquals(car,result);
         assertEquals(1L,smallParkingLot.getCars().size());
     }
@@ -28,7 +29,6 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,1L);
-        Car result = parkingBoy.parkCar(car);
-        assertEquals(car,result);
+        assertTrue(parkingBoy.parkCar(car).isEmpty());
     }
 }

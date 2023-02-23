@@ -22,21 +22,15 @@ public class ParkingManager extends Valet{
 
     @Override
     public ParkingLot chooseParkingLot() {
-        return this.getParkingLots().get(0);
+        return chooseParkingLotByLeftPositions();
     }
 
+
     public Car assignPark(Car carToAssignToPark) {
-        boolean parkSuccessful = false;
         for (Valet subordinate : subordinates) {
-            try {
-                subordinate.parkCar(carToAssignToPark);
-                parkSuccessful = true;
-            }catch (FullyOccupiedException e){
-                continue;
+            if(subordinate.parkCar(carToAssignToPark).isPresent()){
+                return carToAssignToPark;
             }
-        }
-        if(parkSuccessful){
-            return carToAssignToPark;
         }
         throw new FullyOccupiedException("All parking lots are occupied");
     }

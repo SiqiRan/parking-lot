@@ -14,16 +14,19 @@ import java.util.Optional;
 public class Valet {
      List<ParkingLot> parkingLots;
 
-     public Car parkCar(Car carToPark) {
+    public Valet(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+    }
+
+     public Optional<Car> parkCar(Car carToPark) {
         ParkingLot parkingLotToUse = chooseParkingLot();
+        if(!checkIfAvailable(parkingLotToUse)){
+            return Optional.empty();
+        }
         parkingLotToUse.getCars().add(carToPark);
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
-        return carToPark;
-    }
-
-    public Valet(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        return Optional.of(carToPark);
     }
 
     ParkingLot chooseParkingLot(){
@@ -42,5 +45,21 @@ public class Valet {
             }
         }
         return result;
+    }
+
+    private boolean checkIfAvailable(ParkingLot parkingLot){
+        return !parkingLot.getOccupiedPositions().equals(parkingLot.getCapacity());
+    }
+
+     ParkingLot chooseParkingLotByLeftPositions() {
+        ParkingLot leastFilled = this.parkingLots.get(0);
+        for (ParkingLot parkingLot : parkingLots) {
+            long leftPositions = parkingLot.getCapacity() - parkingLot.getOccupiedPositions();
+            long leastLeftPositions = leastFilled.getCapacity() - leastFilled.getOccupiedPositions();
+            if(leftPositions > leastLeftPositions){
+                leastFilled = parkingLot;
+            }
+        }
+        return leastFilled;
     }
 }

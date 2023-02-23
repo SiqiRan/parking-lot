@@ -1,7 +1,6 @@
 package parking.lot.operators;
 
 import parking.lot.entity.ParkingLot;
-import parking.lot.exceptions.FullyOccupiedException;
 
 import java.util.List;
 
@@ -17,9 +16,6 @@ public class SuperParkingBoy extends Valet {
             if(parkingLot.getOccupationRate() >highestUnoccupiedRate.getOccupationRate()){
                 highestUnoccupiedRate = parkingLot;
             }
-        }
-        if(highestUnoccupiedRate.getOccupationRate() == 1){
-            throw new FullyOccupiedException("No Empty Spot");
         }
         return highestUnoccupiedRate;
     }

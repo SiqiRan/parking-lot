@@ -18,7 +18,7 @@ class ParkingManagerTest {
         Car car = new Car(1L,1L);
         Car secondCar = new Car(2L,2L);
         parkingManager.parkCar(car);
-        parkingManager.assignPark(secondCar);
+        assertEquals(secondCar,parkingManager.assignPark(secondCar));
         assertEquals(1,parkingManager.getParkingLots().get(0).getCars().size());
         assertEquals(1,parkingManager.getSubordinates().get(0).getParkingLots().get(0).getCars().size());
     }

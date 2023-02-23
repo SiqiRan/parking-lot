@@ -3,7 +3,6 @@ package parking.lot.operators;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.ParkingLot;
-import parking.lot.exceptions.FullyOccupiedException;
 
 import java.util.List;
 
@@ -18,17 +17,6 @@ public class SmartParkingBoy extends Valet {
 
     @Override
     public ParkingLot chooseParkingLot() {
-        ParkingLot leastFilled = this.parkingLots.get(0);
-        for (ParkingLot parkingLot : parkingLots) {
-            long leftPositions = parkingLot.getCapacity() - parkingLot.getOccupiedPositions();
-            long leastLeftPositions = leastFilled.getCapacity() - leastFilled.getOccupiedPositions();
-            if(leftPositions > leastLeftPositions){
-                leastFilled = parkingLot;
-            }
-        }
-        if(leastFilled.getOccupationRate() == 1){
-            throw new FullyOccupiedException("No Empty Spot");
-        }
-        return leastFilled;
+        return chooseParkingLotByLeftPositions();
     }
 }
