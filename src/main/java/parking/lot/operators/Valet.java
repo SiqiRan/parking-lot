@@ -36,7 +36,7 @@ public class Valet {
     public Optional<Car> pickUp(Long carId){
         Optional<Car> result = Optional.empty();
         for (ParkingLot parkingLot : parkingLots) {
-            result = parkingLot.getCars().stream().filter(car -> car.getId().equals(carId)).findFirst();
+            result = parkingLot.getCars().stream().filter(car -> car.getCarId().equals(carId)).findFirst();
             if(result.isPresent()){
                 parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() - 1);
                 parkingLot.setOccupationRate((double) ((float)parkingLot.getOccupiedPositions()/parkingLot.getCapacity()));

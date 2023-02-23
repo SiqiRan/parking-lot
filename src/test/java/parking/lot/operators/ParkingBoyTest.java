@@ -17,7 +17,7 @@ class ParkingBoyTest {
         ArrayList<Car> cars = new ArrayList<>();
         ParkingLot smallParkingLot = new ParkingLot(200L, cars, "smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        Car car = new Car(1L,1L);
+        Car car = new Car(1L,"car",1L);
         Car result = parkingBoy.parkCar(car).get();
         assertEquals(car,result);
         assertEquals(1L,smallParkingLot.getCars().size());
@@ -25,10 +25,10 @@ class ParkingBoyTest {
 
     @Test
     void should_check_the_empty_spot_before_park(){
-        ArrayList<Car> cars = new ArrayList<>(List.of(new Car(1L,1L)));
+        ArrayList<Car> cars = new ArrayList<>(List.of(new Car(1L,"car",1L)));
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        Car car = new Car(1L,1L);
+        Car car = new Car(1L,"car",1L);
         assertTrue(parkingBoy.parkCar(car).isEmpty());
     }
 }

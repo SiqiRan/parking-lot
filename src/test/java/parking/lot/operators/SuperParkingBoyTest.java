@@ -14,10 +14,10 @@ class SuperParkingBoyTest {
     @Test
     void should_park_car_in_the_parking_lot_with_most_unoccupied_spots(){
         ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>(),"small parking lot");
-        Car car = new Car(1L,1L);
+        Car car = new Car(1L,"car",1L);
         ParkingLot bigParkingLot = new ParkingLot(20L,new ArrayList<>(List.of(car)),"small parking lot");
         SuperParkingBoy superParkingBoy = new SuperParkingBoy(List.of(smallParkingLot,bigParkingLot));
-        Car secondCar = new Car(2L,2L);
+        Car secondCar = new Car(2L,"car two",2L);
         superParkingBoy.parkCar(secondCar);
         assertEquals(1,superParkingBoy.getParkingLots().get(0).getCars().size());
     }

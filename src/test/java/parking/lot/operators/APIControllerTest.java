@@ -25,7 +25,7 @@ class APIControllerTest extends WebApplicationTest{
 
     @Test
     void shouldParkACarWhenGivenEnoughEmptyPositions() throws Exception {
-        Car car = new Car(6L,6L);
+        Car car = new Car(6L,"van",6L);
         webTestClient
                 .post()
                 .uri("http://localhost:8080/parkingLot")
@@ -33,9 +33,6 @@ class APIControllerTest extends WebApplicationTest{
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isCreated()
-                .expectBody().json("{\n" +
-                        "      \"id\": 6,\n" +
-                        "      \"ownerId\": 6\n" +
-                        "    }");
+                .expectBody().jsonPath("$.carName").isEqualTo("van");
     }
 }

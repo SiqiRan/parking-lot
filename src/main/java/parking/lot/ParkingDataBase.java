@@ -27,7 +27,7 @@ public class ParkingDataBase {
 
     private ParkingDataBase(){
         staff = new ArrayList<>();
-        ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>(List.of(new Car(1L,1L))),"small parking lot");
+        ParkingLot smallParkingLot = new ParkingLot(10L,new ArrayList<>(List.of(new Car(1L,"car",1L))),"small parking lot");
         ParkingLot smallParkingLot2 = new ParkingLot(10L,new ArrayList<>(),"small parking lot 2");
         ParkingLot smallParkingLot3 = new ParkingLot(10L,new ArrayList<>(),"small parking lot 3");
         ParkingLot mediumParkingLot = new ParkingLot(20L,new ArrayList<>(),"medium parking lot");
