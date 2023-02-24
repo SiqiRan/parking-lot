@@ -1,4 +1,4 @@
-package parking.lot.operators;
+package parking.lot.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +15,7 @@ import reactor.test.StepVerifier;
 
 import java.io.IOException;
 
-class APIControllerTest extends WebApplicationTest{
+class APIControllerTest {
 
     public static MockWebServer mockBackEnd;
 

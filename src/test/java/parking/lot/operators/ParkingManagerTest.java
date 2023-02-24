@@ -5,6 +5,9 @@ import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 
 import io.vavr.collection.List;
+import parking.lot.entity.operators.ParkingBoy;
+import parking.lot.entity.operators.ParkingManager;
+import parking.lot.entity.operators.SmartParkingBoy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

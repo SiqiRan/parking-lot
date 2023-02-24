@@ -10,10 +10,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/parkingLot")
 @AllArgsConstructor
 public class ParkingController {
-
-    ParkingService parkingService;
     ParkingReactiveService parkingReactiveService;
-
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

@@ -1,9 +1,11 @@
-package parking.lot.operators;
+package parking.lot.entity.directors;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import io.vavr.collection.List;
+import parking.lot.entity.operators.ParkingTable;
+import parking.lot.entity.operators.Valet;
 
 @Getter
 @Setter
