@@ -20,7 +20,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "id=" + id +
+                "carId=" + carId +
+                ", carName='" + carName + '\'' +
                 ", ownerId=" + ownerId +
                 '}';
     }

@@ -1,25 +1,33 @@
 package parking.lot.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
 import parking.lot.entity.Car;
 import reactor.core.publisher.Mono;
 
 @Repository
+@RequiredArgsConstructor
 public class ParkingReactiveRepository {
 
+    WebClient webClient;
+    String baseUrl;
+    public ParkingReactiveRepository(String baseUrl) {
+        this.baseUrl = baseUrl;
+        this.webClient = WebClient.create(baseUrl);
+    }
+
     public Mono<Car> getCarById(Long carId){
-        return WebClient.builder()
-                .baseUrl("http://localhost:3002/parkinglot/" + carId)
-                .build()
+        return webClient
                 .get()
+                .uri(uriBuilder -> uriBuilder.path("/"+carId).build())
                 .retrieve()
                 .bodyToMono(Car.class);
     }
 
     public Mono<Car> parkCar(Car car) {
         return WebClient.builder()
-                .baseUrl("http://localhost:3002/parkinglot/")
+                .baseUrl("http://localhost:8080/parkinglot/")
                 .build()
                 .post()
                 .bodyValue(car)

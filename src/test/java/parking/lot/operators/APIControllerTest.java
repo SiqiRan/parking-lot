@@ -1,38 +1,55 @@
 package parking.lot.operators;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import parking.lot.controller.ParkingReactiveRepository;
 import parking.lot.entity.Car;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
+
+import java.io.IOException;
 
 class APIControllerTest extends WebApplicationTest{
-    @Autowired
-    private WebTestClient webTestClient;
-    @Test
-    void shouldPickUpACarWhenGivenCorrectId() {
-       webTestClient
-               .get()
-               .uri("http://localhost:8080/parkingLot/1")
-               .accept(MediaType.APPLICATION_JSON)
-               .exchange()
-               .expectStatus().isOk()
-               .expectBody().json("{\n" +
-                       "      \"id\": 1,\n" +
-                       "      \"ownerId\": 1\n" +
-                       "    }");
+
+    public static MockWebServer mockBackEnd;
+
+    ParkingReactiveRepository parkingReactiveRepository;
+    @BeforeAll
+    static void setUp() throws IOException {
+        mockBackEnd = new MockWebServer();
+        mockBackEnd.start();
     }
 
+    @BeforeEach
+    void initialize() {
+        String baseUrl = String.format("http://localhost:%s",
+                mockBackEnd.getPort());
+        parkingReactiveRepository = new ParkingReactiveRepository(baseUrl);
+    }
+
+    @AfterAll
+    static void tearDown() throws IOException {
+        mockBackEnd.shutdown();
+    }
     @Test
-    void shouldParkACarWhenGivenEnoughEmptyPositions() throws Exception {
-        Car car = new Car(6L,"van",6L);
-        webTestClient
-                .post()
-                .uri("http://localhost:8080/parkingLot")
-                .bodyValue(car)
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .expectStatus().isCreated()
-                .expectBody().jsonPath("$.carName").isEqualTo("van");
+    void shouldPickUpACarWhenGivenCorrectId() throws JsonProcessingException {
+        Car mockCar = new Car(2L, "trash", 2L);
+        ObjectMapper objectMapper = new ObjectMapper();
+        mockBackEnd.enqueue(new MockResponse()
+                .setBody(objectMapper.writeValueAsString(mockCar))
+                .addHeader("Content-Type", "application/json"));
+
+        Mono<Car> carMono = parkingReactiveRepository.getCarById(2L);
+
+        StepVerifier.create(carMono)
+                .expectNextMatches(car -> car.getCarName()
+                        .equals("trash"))
+                .verifyComplete();
     }
 }
