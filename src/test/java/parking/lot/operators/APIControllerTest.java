@@ -39,7 +39,7 @@ class APIControllerTest extends WebApplicationTest{
     }
     @Test
     void shouldPickUpACarWhenGivenCorrectId() throws JsonProcessingException {
-        Car mockCar = new Car(2L, "trash", 2L);
+        Car mockCar = new Car(2L, "van", 2L);
         ObjectMapper objectMapper = new ObjectMapper();
         mockBackEnd.enqueue(new MockResponse()
                 .setBody(objectMapper.writeValueAsString(mockCar))
@@ -49,7 +49,23 @@ class APIControllerTest extends WebApplicationTest{
 
         StepVerifier.create(carMono)
                 .expectNextMatches(car -> car.getCarName()
-                        .equals("trash"))
+                        .equals("van"))
+                .verifyComplete();
+    }
+
+    @Test
+    void shouldParkCarWhenGivenEnoughPositions() throws JsonProcessingException {
+        Car mockCar = new Car(2L, "bus", 2L);
+        ObjectMapper objectMapper = new ObjectMapper();
+        mockBackEnd.enqueue(new MockResponse()
+                .setBody(objectMapper.writeValueAsString(mockCar))
+                .addHeader("Content-Type", "application/json"));
+
+        Mono<Car> carMono = parkingReactiveRepository.parkCar(mockCar);
+
+        StepVerifier.create(carMono)
+                .expectNextMatches(car -> car.getCarName()
+                        .equals("bus"))
                 .verifyComplete();
     }
 }

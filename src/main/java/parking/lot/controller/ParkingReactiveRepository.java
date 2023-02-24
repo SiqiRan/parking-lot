@@ -26,9 +26,7 @@ public class ParkingReactiveRepository {
     }
 
     public Mono<Car> parkCar(Car car) {
-        return WebClient.builder()
-                .baseUrl("http://localhost:8080/parkinglot/")
-                .build()
+        return webClient
                 .post()
                 .bodyValue(car)
                 .retrieve()
