@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
     @Test
@@ -27,6 +26,6 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,"car",1L);
-        assertTrue(parkingBoy.parkCar(car).isEmpty());
+        assertFalse(parkingBoy.parkCar(car).isPresent());
     }
 }
