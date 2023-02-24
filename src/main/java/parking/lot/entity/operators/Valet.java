@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
-import java.util.Optional;
 
 
 @Getter
@@ -17,15 +16,15 @@ public class Valet {
         this.parkingLots = parkingLots;
     }
 
-     public Optional<Car> parkCar(Car carToPark) {
+     public Option<Car> parkCar(Car carToPark) {
         ParkingLot parkingLotToUse = chooseParkingLot();
         if(!checkIfAvailable(parkingLotToUse)){
-            return Optional.empty();
+            return Option.none();
         }
         parkingLotToUse.setCars(parkingLotToUse.getCars().append(carToPark));
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
-        return Optional.of(carToPark);
+        return Option.of(carToPark);
     }
 
     ParkingLot chooseParkingLot(){

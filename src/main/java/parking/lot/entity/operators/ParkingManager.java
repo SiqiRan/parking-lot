@@ -27,7 +27,7 @@ public class ParkingManager extends Valet{
 
     public Car assignPark(Car carToAssignToPark) {
         for (Valet subordinate : subordinates) {
-            if(subordinate.parkCar(carToAssignToPark).isPresent()){
+            if(subordinate.parkCar(carToAssignToPark).isDefined()){
                 return carToAssignToPark;
             }
         }

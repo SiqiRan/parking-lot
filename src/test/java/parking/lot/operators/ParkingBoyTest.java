@@ -28,6 +28,6 @@ class ParkingBoyTest {
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         Car car = new Car(1L,"car",1L);
-        assertFalse(parkingBoy.parkCar(car).isPresent());
+        assertFalse(parkingBoy.parkCar(car).isDefined());
     }
 }
