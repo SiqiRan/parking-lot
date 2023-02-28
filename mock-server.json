@@ -1,0 +1,11 @@
+{
+  "parkingLot":
+    [
+      {
+        "id": 1,
+        "carId": 1,
+        "carName": "van",
+        "ownerId": 1
+      }
+    ]
+}
