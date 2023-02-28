@@ -1,31 +1,67 @@
 # Parking Lot
 
-## 开始
-运行 `./gradlew openIdea`生成项目文件，并在Intellij IDEA中打开项目。
+## Introduction
+This project is for personal training. Inspired by the parking lot project shared in thoughtworks.
 
-## 需求
-### Step 1
-要有车, 要有停车场, 能停车, 能取车
+## Quick Start
+use `./mvnw spring-boot:run` to run this project.
 
-### Step 2
-有个停车场管理员，他管理多个停车场，他总是把车停到第一个有空位的停车场
+## Tech stack
+- Java
+- Springboot
+- Webflux
+- Vavr
+- Minikube
+- ArgoCD
+- Docker
 
-### Step 3
-又有一个中级停车场管理员，他管理多个停车场，他总是把车停在空位数量最多的停车场
-
-### Step 4
-又又有一个高级停车场管理员，他管理多个停车场，他总是把车停在空位率最高的停车场
-
-### Step 5
-又又又有一个经理级停车管理员，他管理停车场的同时，又管理其他的停车场管理员，能把车停在自己的停车场，也能把车交给其他停车场管理员停车
-
-### Step 6
-经理级停车场管理员，打印出下属停车场管理员、其所管理的停车场，以及他自己直接管理的停车场, 信息包括名字, 总车位数，空位数 和 使用率
-
-## 练习目的
+## Practice requirements
 - Pair
 - TDD
 - Refactoring
 - Simple Design
+- Design pattern
 
-change something to test GitHub actions.
+## Requirements
+### Step 1
+Parking lots enabling parking and picking up cars.
+
+### Step 2
+A ```ParkingBoy``` 
+- Can manage multiple parking lots.
+- Park the car to the **first** parking lot with available position(s). 
+
+### Step 3
+A ```SmartParkingBoy```
+- Can manage multiple parking lots.
+- Park the car to the parking lot with most available position(s).
+
+### Step 4
+A ```SuperParkingBoy```
+- Can manage multiple parking lots.
+- Park the car to the parking lot with the highest unoccupied rate.
+
+### Step 5
+A ```ParkingManager```
+- Can manage multiple parking lots.
+- Can manage multiple parking boys.
+- Can ask their subordinates to park the car or park the car themselves.
+
+### Step 6
+A ```ParkingDirector```
+- Can manage multiple parking lots.
+- Can manage multiple parking boys and managers.
+- Can print out the managed valets and their assigned parking lots, and the parking lots directly managed. 
+- The information of parking lots should contain their name, capacity, number of available positions and
+  utilization rate.
+
+## Progress
+- Functionalities:
+  - [x] parking boy
+  - [x] smart parking boy
+  - [x] super parking boy
+  - [x] parking manager
+  - [ ] parking director (WIP)
+- Deployment:
+  - [x] Docker image
+  - [ ] Deploy to argoCD and expose the ports (WIP)  
