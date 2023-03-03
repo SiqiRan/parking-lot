@@ -28,7 +28,13 @@ public class Valet {
     }
 
     ParkingLot chooseParkingLot(){
-         return this.parkingLots.get(0);
+        ParkingLot parkingLot = parkingLots.get(0);
+        for (ParkingLot currenParkinglot : parkingLots) {
+            if(currenParkinglot.getOccupiedPositions() < currenParkinglot.getCapacity()){
+                parkingLot = currenParkinglot;
+            }
+        }
+        return parkingLot;
     }
 
     public Option<Car> pickUp(Long carId){
