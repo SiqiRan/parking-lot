@@ -17,6 +17,21 @@ public class ParkingLot {
         this.cars = cars;
         this.name = name;
         this.occupiedPositions = (long) cars.size();
-        this.occupationRate = 0.0;
+        this.occupationRate = (double)cars.size()/capacity;
+    }
+
+    public Double getOccupationRate() {
+        return (double) occupiedPositions / capacity;
+    }
+
+    public Double getEmptyRate(){
+        return 1 - (double)occupiedPositions / capacity;
+    }
+    public boolean isEmpty(){
+        return capacity > occupiedPositions;
+    }
+
+    public Long getEmptyPositions(){
+        return capacity - occupiedPositions;
     }
 }

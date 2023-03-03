@@ -30,7 +30,7 @@ public class Valet {
     ParkingLot chooseParkingLot(){
         ParkingLot parkingLot = parkingLots.get(0);
         for (ParkingLot currenParkinglot : parkingLots) {
-            if(currenParkinglot.getOccupiedPositions() < currenParkinglot.getCapacity()){
+            if(currenParkinglot.isEmpty()){
                 parkingLot = currenParkinglot;
             }
         }
@@ -56,14 +56,12 @@ public class Valet {
     }
 
      ParkingLot chooseParkingLotByLeftPositions() {
-        ParkingLot leastFilled = this.parkingLots.get(0);
+        ParkingLot mostEmptyPositions = this.parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
-            long leftPositions = parkingLot.getCapacity() - parkingLot.getOccupiedPositions();
-            long leastLeftPositions = leastFilled.getCapacity() - leastFilled.getOccupiedPositions();
-            if(leftPositions > leastLeftPositions){
-                leastFilled = parkingLot;
+            if(parkingLot.getEmptyPositions() > mostEmptyPositions.getEmptyPositions()){
+                mostEmptyPositions = parkingLot;
             }
         }
-        return leastFilled;
+        return mostEmptyPositions;
     }
 }

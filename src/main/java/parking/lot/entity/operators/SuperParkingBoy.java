@@ -10,12 +10,12 @@ public class SuperParkingBoy extends Valet {
 
     @Override
     public ParkingLot chooseParkingLot() {
-        ParkingLot highestUnoccupiedRate = parkingLots.get(0);
+        ParkingLot highestEmptyRate = parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getOccupationRate() >highestUnoccupiedRate.getOccupationRate()){
-                highestUnoccupiedRate = parkingLot;
+            if(parkingLot.getEmptyRate() > highestEmptyRate.getEmptyRate()){
+                highestEmptyRate = parkingLot;
             }
         }
-        return highestUnoccupiedRate;
+        return highestEmptyRate;
     }
 }
