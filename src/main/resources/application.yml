@@ -2,4 +2,4 @@ server:
   port: 8080
 environment:
   dev:
-    baseUrl: http://localhost:3002/parkingLot
+    baseUrl: http://localhost:3001/parking-lot

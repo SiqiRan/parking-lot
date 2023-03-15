@@ -7,7 +7,7 @@ import parking.lot.entity.Car;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/parkingLot")
+@RequestMapping("/parking-lot")
 @AllArgsConstructor
 public class ParkingController {
     ParkingReactiveService parkingReactiveService;

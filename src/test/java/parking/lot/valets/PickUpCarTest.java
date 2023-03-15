@@ -1,9 +1,9 @@
-package parking.lot.operators;
+package parking.lot.valets;
 
 import org.junit.jupiter.api.Test;
 import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
-import parking.lot.entity.operators.ParkingBoy;
+import parking.lot.entity.valets.ParkingBoy;
 import parking.lot.exceptions.CarNotFoundException;
 
 import io.vavr.collection.List;

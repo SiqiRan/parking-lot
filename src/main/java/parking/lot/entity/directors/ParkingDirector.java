@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import io.vavr.collection.List;
-import parking.lot.entity.operators.ParkingTable;
-import parking.lot.entity.operators.Valet;
+import parking.lot.entity.valets.ParkingTable;
+import parking.lot.entity.valets.Valet;
 
 @Getter
 @Setter

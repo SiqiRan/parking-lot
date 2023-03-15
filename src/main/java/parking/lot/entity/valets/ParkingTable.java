@@ -1,4 +1,4 @@
-package parking.lot.entity.operators;
+package parking.lot.entity.valets;
 
 import io.vavr.collection.List;
 import lombok.Getter;

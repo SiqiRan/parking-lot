@@ -1,4 +1,4 @@
-package parking.lot.operators;
+package parking.lot.valets;
 
 import org.junit.jupiter.api.Test;
 import parking.lot.entity.directors.ParkingDirector;
@@ -6,10 +6,10 @@ import parking.lot.entity.Car;
 import parking.lot.entity.ParkingLot;
 
 import io.vavr.collection.List;
-import parking.lot.entity.operators.ParkingBoy;
-import parking.lot.entity.operators.ParkingManager;
-import parking.lot.entity.operators.ParkingTable;
-import parking.lot.entity.operators.SmartParkingBoy;
+import parking.lot.entity.valets.ParkingBoy;
+import parking.lot.entity.valets.ParkingManager;
+import parking.lot.entity.valets.ParkingTable;
+import parking.lot.entity.valets.SmartParkingBoy;
 
 import static org.junit.jupiter.api.Assertions.*;
 

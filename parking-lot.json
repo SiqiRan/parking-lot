@@ -1,0 +1,23 @@
+{
+  "parking-lot":
+  [
+    {
+      "id": 1,
+      "carId": 1,
+      "carName": "van",
+      "ownerId": 1
+    },
+    {
+      "id": 2,
+      "carId": 2,
+      "carName": "bus",
+      "ownerId": 2
+    },
+    {
+      "id": 3,
+      "carId": 3,
+      "carName": "jeep",
+      "ownerId": 2
+    }
+  ]
+}

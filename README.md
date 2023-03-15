@@ -64,4 +64,8 @@ A ```ParkingDirector```
   - [ ] parking director (WIP)
 - Deployment:
   - [x] Docker image
-  - [ ] Deploy to argoCD and expose the ports (WIP)  
+  - [x] Deploy to argoCD
+
+## How to run
+At first, run ```json-server --watch parking-lot.json --port 3001``` to launch the json server, then run the app.
+Try `http://localhost:8080/parking-lot/1` to see if you can get the data.
