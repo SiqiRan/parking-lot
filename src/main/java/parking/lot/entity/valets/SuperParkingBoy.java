@@ -4,6 +4,9 @@ import io.vavr.collection.List;
 import parking.lot.entity.ParkingLot;
 
 public class SuperParkingBoy extends Valet {
+    public SuperParkingBoy() {
+    }
+
     public SuperParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }

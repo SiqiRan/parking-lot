@@ -12,10 +12,25 @@ import parking.lot.exceptions.FullyOccupiedException;
 @Getter
 @Setter
 public class ParkingManager extends Valet{
-    List<Valet> subordinates;
+    private List<Valet> subordinates;
 
-    public ParkingManager(List<ParkingLot> parkingLots,List<Valet> subordinates) {
+    public ParkingManager() {
+    }
+
+    public List<Valet> getSubordinates() {
+        return subordinates;
+    }
+
+    public void setSubordinates(List<Valet> subordinates) {
+        this.subordinates = subordinates;
+    }
+
+    public ParkingManager(List<ParkingLot> parkingLots, List<Valet> subordinates) {
         super(parkingLots);
+        this.subordinates = subordinates;
+    }
+
+    public ParkingManager(List<Valet> subordinates) {
         this.subordinates = subordinates;
     }
 

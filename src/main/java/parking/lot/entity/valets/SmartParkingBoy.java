@@ -9,6 +9,9 @@ import parking.lot.entity.ParkingLot;
 @Setter
 public class SmartParkingBoy extends Valet {
 
+    public SmartParkingBoy() {
+    }
+
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }

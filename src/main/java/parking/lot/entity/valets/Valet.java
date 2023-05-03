@@ -11,12 +11,16 @@ import parking.lot.entity.ParkingLot;
 @Getter
 @Setter
 public class Valet {
-     List<ParkingLot> parkingLots;
+    List<ParkingLot> parkingLots;
+
+    public Valet() {
+    }
+
     public Valet(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
-     public Option<Car> parkCar(Car carToPark) {
+    public Option<Car> parkCar(Car carToPark) {
         ParkingLot parkingLotToUse = chooseParkingLot();
         if(!checkIfAvailable(parkingLotToUse)){
             return Option.none();
@@ -63,5 +67,13 @@ public class Valet {
             }
         }
         return mostEmptyPositions;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+    public void setParkingLots(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 }

@@ -61,7 +61,7 @@ A ```ParkingDirector```
   - [x] smart parking boy
   - [x] super parking boy
   - [x] parking manager
-  - [ ] parking director (WIP)
+  - [x] parking director
 - Deployment:
   - [x] Docker image
   - [x] Deploy to argoCD
