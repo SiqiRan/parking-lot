@@ -16,7 +16,7 @@ class ParkingBoyTest {
         List<Car> cars = List.of();
         ParkingLot smallParkingLot = new ParkingLot(200L, cars, "smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        Car car = new Car(1L,"car",1L);
+        Car car = new Car("1");
         Car result = parkingBoy.parkCar(car).get();
         assertEquals(car,result);
         assertEquals(1L,smallParkingLot.getCars().size());
@@ -24,10 +24,10 @@ class ParkingBoyTest {
 
     @Test
     void should_check_the_empty_spot_before_park(){
-        List<Car> cars = List.of(new Car(1L,"car",1L));
+        List<Car> cars = List.of(new Car("1"));
         ParkingLot smallParkingLot = new ParkingLot(1L, cars,"smallParkingLot");
         Valet parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        Car car = new Car(1L,"car",1L);
+        Car car = new Car("1");
         assertFalse(parkingBoy.parkCar(car).isDefined());
     }
 }

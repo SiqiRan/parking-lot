@@ -1,28 +1,16 @@
 package parking.lot.entity;
 
-import lombok.*;
+public class Car extends Vehicle {
 
-@Getter
-@Setter
-@AllArgsConstructor
-@RequiredArgsConstructor
-@NoArgsConstructor
-public class Car {
+    public Car(String plateNumber) {
+        super("car", plateNumber);
+    }
 
-    Long id;
-    @NonNull
-    Long carId;
-    @NonNull
-    String carName;
-    @NonNull
-    Long ownerId;
+    public Car(String type, String plateNumber) {
+        super(type, plateNumber);
+    }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carId=" + carId +
-                ", carName='" + carName + '\'' +
-                ", ownerId=" + ownerId +
-                '}';
+    public Car() {
+        super();
     }
 }

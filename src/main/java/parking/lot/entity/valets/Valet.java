@@ -42,10 +42,10 @@ public class Valet {
         return parkingLot;
     }
 
-    public Option<Car> pickUp(Long carId){
+    public Option<Car> pickUp(String plateNumber){
         Option<Car> result = Option.none();
         for (ParkingLot parkingLot : parkingLots) {
-            result = parkingLot.getCars().find(car -> car.getCarId().equals(carId));
+            result = parkingLot.getCars().find(car -> car.getPlateNumber().equals(plateNumber));
             if(result.isDefined()){
                 parkingLot.setOccupiedPositions(parkingLot.getOccupiedPositions() - 1);
                 parkingLot.setOccupationRate((double) ((float)parkingLot.getOccupiedPositions()/parkingLot.getCapacity()));

@@ -17,8 +17,8 @@ class ParkingManagerTest {
         ParkingBoy parkingBoy = new ParkingBoy(List.of(new ParkingLot(10L,List.empty(),"test parking lot")));
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(List.of(new ParkingLot(20L,List.empty(),"another parking lot")));
         ParkingManager parkingManager = new ParkingManager(List.of(new ParkingLot(30L,List.empty(),"other parking lot")),List.of(parkingBoy,smartParkingBoy));
-        Car car = new Car(1L,"car one",1L);
-        Car secondCar = new Car(2L,"car two",2L);
+        Car car = new Car("1");
+        Car secondCar = new Car("2");
         parkingManager.parkCar(car);
         assertEquals(secondCar,parkingManager.assignPark(secondCar));
         assertEquals(1,parkingManager.getParkingLots().get(0).getCars().size());

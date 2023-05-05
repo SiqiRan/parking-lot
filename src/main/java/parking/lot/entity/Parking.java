@@ -2,7 +2,7 @@ package parking.lot.entity;
 
 import java.time.Instant;
 
-public class Vehicle {
+public class Parking {
     Long id;
     Long plateNumber;
     String ownerId;

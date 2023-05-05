@@ -50,7 +50,7 @@ public class ParkingManager extends Valet{
         throw new FullyOccupiedException("All parking lots are occupied");
     }
 
-    public Car pickUpWithSubordinates(Long carId){
+    public Car pickUpWithSubordinates(String carId){
         Option<Car> pickUpResult = this.pickUp(carId);
         if(pickUpResult.isDefined()){
             return pickUpResult.get();

@@ -13,20 +13,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PickUpCarTest {
     @Test
     void should_qet_car_by_id() throws CarNotFoundException {
-        Car car = new Car(1L,"car",1L);
+        Car car = new Car("1");
         ParkingLot smallParkingLot = new ParkingLot(200L, List.of(car),"small parking lot");
         ParkingBoy parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        assertEquals(car, parkingBoy.pickUp(1L).get());
+        assertEquals(car, parkingBoy.pickUp("1").get());
     }
 
     @Test
     void should_pick_up_the_car() throws CarNotFoundException{
-        Car car = new Car(1L,"car",1L);
-        Car secondCar = new Car(2L,"car two",2L);
+        Car car = new Car("1");
+        Car secondCar = new Car("2");
         ParkingLot smallParkingLot = new ParkingLot(200L, List.of(car),"small parking lot");
         ParkingBoy parkingBoy = new ParkingBoy(List.of(smallParkingLot));
         parkingBoy.parkCar(secondCar);
-        parkingBoy.pickUp(2L);
+        parkingBoy.pickUp("2");
         assertEquals(1,smallParkingLot.getCars().size());
     }
 }
