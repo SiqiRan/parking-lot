@@ -15,6 +15,7 @@ public class ParkingManager extends Valet{
     private List<Valet> subordinates;
 
     public ParkingManager() {
+        subordinates = List.empty();
     }
 
     public List<Valet> getSubordinates() {

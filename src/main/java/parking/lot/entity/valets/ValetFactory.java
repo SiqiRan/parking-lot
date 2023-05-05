@@ -2,7 +2,20 @@ package parking.lot.entity.valets;
 
 public class ValetFactory {
 
-    Valet generateValet(String type){
+    private static ValetFactory instance;
+
+    private ValetFactory(){
+
+    }
+
+    public static ValetFactory getValetFactory(){
+        if(instance == null){
+            instance = new ValetFactory();
+        }
+        return instance;
+    }
+
+    public Valet generateValet(String type){
         switch (type){
             case "smart":
                 return new SmartParkingBoy();

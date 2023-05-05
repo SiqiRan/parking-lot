@@ -14,6 +14,7 @@ public class Valet {
     List<ParkingLot> parkingLots;
 
     public Valet() {
+        this.parkingLots = List.empty();
     }
 
     public Valet(List<ParkingLot> parkingLots) {
