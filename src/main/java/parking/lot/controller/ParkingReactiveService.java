@@ -2,7 +2,7 @@ package parking.lot.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import parking.lot.entity.Car;
+import parking.lot.entity.vehicles.Car;
 import reactor.core.publisher.Mono;
 
 @Service

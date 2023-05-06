@@ -3,7 +3,7 @@ package parking.lot.controller;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
-import parking.lot.entity.Car;
+import parking.lot.entity.vehicles.Car;
 import reactor.core.publisher.Mono;
 
 @Repository

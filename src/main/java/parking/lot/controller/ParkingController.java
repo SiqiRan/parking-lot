@@ -3,7 +3,7 @@ package parking.lot.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import parking.lot.entity.Car;
+import parking.lot.entity.vehicles.Car;
 import reactor.core.publisher.Mono;
 
 @RestController

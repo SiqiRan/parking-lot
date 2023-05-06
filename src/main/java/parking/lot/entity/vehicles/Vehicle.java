@@ -1,9 +1,8 @@
-package parking.lot.entity;
+package parking.lot.entity.vehicles;
 
 public class Vehicle {
 
     String type;
-
     String plateNumber;
 
     public Vehicle(String type, String plateNumber) {

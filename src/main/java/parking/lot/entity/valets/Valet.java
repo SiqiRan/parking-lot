@@ -4,8 +4,8 @@ import io.vavr.collection.List;
 import io.vavr.control.Option;
 import lombok.Getter;
 import lombok.Setter;
-import parking.lot.entity.Car;
-import parking.lot.entity.ParkingLot;
+import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.parking.ParkingLot;
 
 
 @Getter

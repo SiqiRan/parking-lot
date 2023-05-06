@@ -1,8 +1,8 @@
 package parking.lot.valets;
 
 import org.junit.jupiter.api.Test;
-import parking.lot.entity.Car;
-import parking.lot.entity.ParkingLot;
+import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.parking.ParkingLot;
 import parking.lot.entity.valets.ParkingBoy;
 import parking.lot.exceptions.CarNotFoundException;
 

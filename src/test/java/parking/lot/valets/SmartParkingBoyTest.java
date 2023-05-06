@@ -2,8 +2,8 @@ package parking.lot.valets;
 
 import io.vavr.collection.List;
 import org.junit.jupiter.api.Test;
-import parking.lot.entity.Car;
-import parking.lot.entity.ParkingLot;
+import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.parking.ParkingLot;
 import parking.lot.entity.valets.SmartParkingBoy;
 
 import static org.junit.jupiter.api.Assertions.*;

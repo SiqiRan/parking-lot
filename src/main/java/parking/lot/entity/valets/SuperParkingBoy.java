@@ -1,7 +1,7 @@
 package parking.lot.entity.valets;
 
 import io.vavr.collection.List;
-import parking.lot.entity.ParkingLot;
+import parking.lot.entity.parking.ParkingLot;
 
 public class SuperParkingBoy extends Valet {
     public SuperParkingBoy() {

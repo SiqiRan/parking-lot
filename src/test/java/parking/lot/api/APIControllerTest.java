@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import parking.lot.controller.ParkingReactiveRepository;
-import parking.lot.entity.Car;
+import parking.lot.entity.vehicles.Car;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 

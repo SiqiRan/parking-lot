@@ -1,9 +1,11 @@
-package parking.lot.entity;
+package parking.lot.entity.parking;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import io.vavr.collection.List;
+import parking.lot.entity.vehicles.Car;
+
 @Setter
 @Getter
 public class ParkingLot {

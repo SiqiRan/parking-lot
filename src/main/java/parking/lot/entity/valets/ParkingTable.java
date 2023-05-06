@@ -3,7 +3,7 @@ package parking.lot.entity.valets;
 import io.vavr.collection.List;
 import lombok.Getter;
 import lombok.Setter;
-import parking.lot.entity.ParkingLot;
+import parking.lot.entity.parking.ParkingLot;
 
 @Getter
 @Setter
