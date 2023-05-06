@@ -1,12 +1,16 @@
 package parking.lot.entity.parking;
 
 import parking.lot.entity.Customer;
+import parking.lot.entity.vehicles.Vehicle;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class FlatParking {
     private Long id;
-    private String carType;
+    private String vehicleType;
     private String plateNumber;
     private String customerName;
     private String customerIdentification;
@@ -49,8 +53,10 @@ public class FlatParking {
         return parkingTime;
     }
 
-    public void setParkingTime(Instant parkingTime) {
-        this.parkingTime = parkingTime;
+    public void setParkingTime(String parkingTime) {
+        LocalDate localDate = LocalDate.parse(parkingTime);
+        ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.systemDefault());
+        this.parkingTime = zonedDateTime.toInstant();
     }
 
     public double getParkingFee() {
@@ -61,15 +67,15 @@ public class FlatParking {
         this.parkingFee = parkingFee;
     }
 
-    public String getCarType() {
-        return carType;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setCarType(String carType) {
-        this.carType = carType;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
     public Parking toParking(){
-        return new Parking(this.plateNumber, new Customer(this.customerName,this.customerIdentification),this.parkingTime);
+        return new Parking(new Vehicle(this.vehicleType,this.plateNumber), new Customer(this.customerName,this.customerIdentification),this.parkingTime);
     }
 }

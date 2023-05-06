@@ -1,12 +1,16 @@
 package parking.lot.entity.parking;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import parking.lot.entity.Customer;
 
 public class DigitalParking {
+    ObjectMapper objectMapper = new ObjectMapper();
+    @JsonUnwrapped
     private Customer owner;
-    private String carType;
-    private String id;
+    private String vehicleType;
+    private String serialNumber;
     private String parkingTime;
 
     public Customer getOwner() {
@@ -17,20 +21,20 @@ public class DigitalParking {
         this.owner = owner;
     }
 
-    public String getCarType() {
-        return carType;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setCarType(String carType) {
-        this.carType = carType;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public String getId() {
-        return id;
+    public String getSerialNumber() {
+        return serialNumber;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
     }
 
     public String getParkingTime() {
@@ -43,6 +47,10 @@ public class DigitalParking {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -4,6 +4,11 @@ public class Customer {
     String name;
     String identification;
 
+    public Customer(String name, String identification) {
+        this.name = name;
+        this.identification = identification;
+    }
+
     public String getName() {
         return name;
     }
@@ -17,11 +22,6 @@ public class Customer {
     }
 
     public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public Customer(String name, String identification) {
-        this.name = name;
         this.identification = identification;
     }
 }

@@ -1,11 +1,13 @@
 package parking.lot.entity.parking;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * This is to simulate parking recorded in handwriting.
  */
 public class ManualParking {
+    ObjectMapper objectMapper = new ObjectMapper();
 
     private String whatKindOfCar;
     private String id;
@@ -46,6 +48,10 @@ public class ManualParking {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
