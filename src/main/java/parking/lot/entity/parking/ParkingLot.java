@@ -30,7 +30,7 @@ public class ParkingLot {
         return 1 - (double)occupiedPositions / capacity;
     }
 
-    public boolean isEmpty(){
+    public boolean hasSpace(){
         return capacity > occupiedPositions;
     }
 

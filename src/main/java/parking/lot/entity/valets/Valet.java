@@ -13,4 +13,9 @@ public interface Valet {
 
     Option<Vehicle> pickUp(String plateNumber);
 
+    void addParkingLot(ParkingLot parkingLot);
+
+    List<ParkingLot> getParkingLots();
+
+    Option<Vehicle> parkToParkingLot(Vehicle vehicleToPark, ParkingLot parkingLotToUse);
 }

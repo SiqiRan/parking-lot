@@ -13,6 +13,7 @@ import static parking.lot.utils.ParkingLotUtils.checkIfAvailable;
 @Getter
 @Setter
 public class BasicValet implements Valet{
+
     protected List<ParkingLot> parkingLots;
 
     public BasicValet() {
@@ -24,24 +25,25 @@ public class BasicValet implements Valet{
     }
 
     public ParkingLot chooseParkingLot(List<ParkingLot> parkingLots){
-        ParkingLot parkingLot = parkingLots.get(0);
-        for (ParkingLot currenParkinglot : parkingLots) {
-            if(currenParkinglot.isEmpty()){
-                parkingLot = currenParkinglot;
-            }
-        }
-        return parkingLot;
+        return parkingLots.get(0);
     }
 
-    public Option<Vehicle> park(Vehicle carToPark) {
+    public Option<Vehicle> park(Vehicle vehicleToPark) {
         if(!checkIfAvailable(this.parkingLots)){
             return Option.none();
         }
         ParkingLot parkingLotToUse = chooseParkingLot(this.parkingLots);
-        parkingLotToUse.setVehicles(parkingLotToUse.getVehicles().append(carToPark));
+        parkingLotToUse.setVehicles(parkingLotToUse.getVehicles().append(vehicleToPark));
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
-        return Option.of(carToPark);
+        return Option.of(vehicleToPark);
+    }
+
+    public Option<Vehicle> parkToParkingLot(Vehicle vehicleToPark, ParkingLot parkingLotToUse){
+        parkingLotToUse.setVehicles(parkingLotToUse.getVehicles().append(vehicleToPark));
+        parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
+        parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
+        return Option.of(vehicleToPark);
     }
 
     public Option<Vehicle> pickUp(String plateNumber){
@@ -58,16 +60,12 @@ public class BasicValet implements Valet{
         return result;
     }
 
-    ParkingLot chooseParkingLotByLeftPositions() {
-        ParkingLot mostEmptyPositions = this.parkingLots.get(0);
-        for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.getEmptyPositions() > mostEmptyPositions.getEmptyPositions()){
-                mostEmptyPositions = parkingLot;
-            }
-        }
-        return mostEmptyPositions;
+    @Override
+    public void addParkingLot(ParkingLot parkingLot) {
+        this.parkingLots = this.parkingLots.append(parkingLot);
     }
 
+    @Override
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
     }

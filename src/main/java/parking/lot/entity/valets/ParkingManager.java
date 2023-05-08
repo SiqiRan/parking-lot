@@ -4,6 +4,7 @@ import io.vavr.collection.List;
 import io.vavr.control.Option;
 import lombok.Getter;
 import lombok.Setter;
+import parking.lot.entity.valets.decorators.FirstEmptyFitDecorator;
 import parking.lot.entity.vehicles.Car;
 import parking.lot.entity.parking.ParkingLot;
 import parking.lot.entity.vehicles.Vehicle;
@@ -38,7 +39,7 @@ public class ParkingManager extends BasicValet {
 
     @Override
     public ParkingLot chooseParkingLot(List<ParkingLot> parkingLots) {
-        return chooseParkingLotByLeftPositions();
+        return new FirstEmptyFitDecorator(this).chooseParkingLot(parkingLots);
     }
 
 

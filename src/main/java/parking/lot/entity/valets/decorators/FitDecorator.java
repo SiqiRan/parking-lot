@@ -7,7 +7,9 @@ import parking.lot.entity.valets.Valet;
 import parking.lot.entity.vehicles.Vehicle;
 
 public abstract class FitDecorator implements Valet {
-    private final Valet valet;
+    private Valet valet;
+
+    private FitDecorator(){}
 
     public FitDecorator(Valet valet){
         this.valet = valet;
@@ -28,5 +30,18 @@ public abstract class FitDecorator implements Valet {
         return valet.pickUp(plateNumber);
     }
 
+    @Override
+    public void addParkingLot(ParkingLot parkingLot){
+        valet.addParkingLot(parkingLot);
+    }
 
+    @Override
+    public List<ParkingLot> getParkingLots(){
+        return valet.getParkingLots();
+    }
+
+    @Override
+    public Option<Vehicle> parkToParkingLot(Vehicle vehicleToPark, ParkingLot parkingLotToUse){
+        return  valet.parkToParkingLot(vehicleToPark,parkingLotToUse);
+    }
 }
