@@ -3,7 +3,7 @@ package parking.lot.entity.valets;
 import io.vavr.collection.List;
 import parking.lot.entity.parking.ParkingLot;
 
-public class SuperParkingBoy extends Valet {
+public class SuperParkingBoy extends BasicValet {
     public SuperParkingBoy() {
     }
 
@@ -12,7 +12,7 @@ public class SuperParkingBoy extends Valet {
     }
 
     @Override
-    public ParkingLot chooseParkingLot() {
+    public ParkingLot chooseParkingLot(List<ParkingLot> parkingLots) {
         ParkingLot highestEmptyRate = parkingLots.get(0);
         for (ParkingLot parkingLot : parkingLots) {
             if(parkingLot.getEmptyRate() > highestEmptyRate.getEmptyRate()){

@@ -22,7 +22,7 @@ class ParkingDirectorTest {
         ParkingManager parkingManager = new ParkingManager(List.of(new ParkingLot(30L,List.empty(),"other parking lot")),List.of(parkingBoy,smartParkingBoy));
         Car car = new Car("1");
         Car secondCar = new Car("2");
-        parkingManager.parkCar(car);
+        parkingManager.park(car);
         parkingManager.assignPark(secondCar);
         ParkingDirector parkingDirector = new ParkingDirector(List.of(parkingBoy,smartParkingBoy,parkingManager));
         ParkingTable parkingTable = parkingDirector.getParkingTable();

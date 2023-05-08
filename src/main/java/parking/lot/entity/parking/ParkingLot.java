@@ -1,25 +1,25 @@
 package parking.lot.entity.parking;
 
+import io.vavr.collection.List;
 import lombok.Getter;
 import lombok.Setter;
-
-import io.vavr.collection.List;
-import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.vehicles.Vehicle;
 
 @Setter
 @Getter
 public class ParkingLot {
     Long capacity;
-    List<Car> cars;
+    List<Vehicle> vehicles;
     Long occupiedPositions;
     Double occupationRate;
     String name;
-    public ParkingLot(Long capacity, List<Car> cars, String name) {
+
+    public ParkingLot(Long capacity, List<Vehicle> vehicles, String name) {
         this.capacity = capacity;
-        this.cars = cars;
+        this.vehicles = vehicles;
         this.name = name;
-        this.occupiedPositions = (long) cars.size();
-        this.occupationRate = (double)cars.size()/capacity;
+        this.occupiedPositions = (long) vehicles.size();
+        this.occupationRate = (double) vehicles.size()/capacity;
     }
 
     public Double getOccupationRate() {
@@ -29,6 +29,7 @@ public class ParkingLot {
     public Double getEmptyRate(){
         return 1 - (double)occupiedPositions / capacity;
     }
+
     public boolean isEmpty(){
         return capacity > occupiedPositions;
     }

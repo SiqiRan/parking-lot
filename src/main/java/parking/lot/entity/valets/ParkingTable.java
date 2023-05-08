@@ -9,13 +9,13 @@ import parking.lot.entity.parking.ParkingLot;
 @Setter
 public class ParkingTable {
     private List<ParkingLot> parkingLots;
-    private List<Valet> valets;
+    private List<BasicValet> valets;
 
-    public ParkingTable(List<Valet> valets){
+    public ParkingTable(List<BasicValet> valets){
         this.valets = valets;
         this.parkingLots = List.empty();
-        for (Valet valet : valets) {
-            parkingLots = parkingLots.appendAll(valet.getParkingLots());
+        for (BasicValet basicValet : valets) {
+            parkingLots = parkingLots.appendAll(basicValet.getParkingLots());
         }
     }
 

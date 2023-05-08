@@ -64,6 +64,8 @@ A ```ParkingDirector```
 - Digital input, where customer's concept has been created but others not
 - Smart input, where information is consistent with our system
 
+### Customized basicValet
+- Different valets have different strategies of parking. We want a basicValet who can handle all kinds of parking. 
 
 ## Progress
 - Functionalities:

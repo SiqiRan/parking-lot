@@ -5,7 +5,7 @@ import parking.lot.entity.valets.ParkingManager
 import parking.lot.entity.valets.ValetFactory
 import spock.lang.Specification
 
-class ValetFactorySpec extends Specification {
+class BasicValetFactorySpec extends Specification {
     def "should generate valets" (){
         given:
         def valetFactory = ValetFactory.getValetFactory()

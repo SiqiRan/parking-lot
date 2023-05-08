@@ -7,7 +7,7 @@ import parking.lot.entity.parking.ParkingLot;
 
 @Getter
 @Setter
-public class SmartParkingBoy extends Valet {
+public class SmartParkingBoy extends BasicValet {
 
     public SmartParkingBoy() {
     }
@@ -17,7 +17,7 @@ public class SmartParkingBoy extends Valet {
     }
 
     @Override
-    public ParkingLot chooseParkingLot() {
+    public ParkingLot chooseParkingLot(List<ParkingLot> parkingLots) {
         return chooseParkingLotByLeftPositions();
     }
 }

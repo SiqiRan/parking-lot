@@ -15,7 +15,7 @@ public class ValetFactory {
         return instance;
     }
 
-    public Valet generateValet(String type){
+    public BasicValet generateValet(String type){
         switch (type){
             case "smart":
                 return new SmartParkingBoy();

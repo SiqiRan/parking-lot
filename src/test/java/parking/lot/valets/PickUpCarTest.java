@@ -25,8 +25,8 @@ class PickUpCarTest {
         Car secondCar = new Car("2");
         ParkingLot smallParkingLot = new ParkingLot(200L, List.of(car),"small parking lot");
         ParkingBoy parkingBoy = new ParkingBoy(List.of(smallParkingLot));
-        parkingBoy.parkCar(secondCar);
+        parkingBoy.park(secondCar);
         parkingBoy.pickUp("2");
-        assertEquals(1,smallParkingLot.getCars().size());
+        assertEquals(1,smallParkingLot.getVehicles().size());
     }
 }
