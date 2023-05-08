@@ -55,6 +55,16 @@ A ```ParkingDirector```
 - The information of parking lots should contain their name, capacity, number of available positions and
   utilization rate.
 
+## Requirements Created By Siqi
+### Director's people administration
+- Can Create Any type of valets
+
+### Inconsistent inputs
+- Scanned handwriting, where information is presented in a flattened way
+- Digital input, where customer's concept has been created but others not
+- Smart input, where information is consistent with our system
+
+
 ## Progress
 - Functionalities:
   - [x] parking boy
