@@ -1,28 +1,35 @@
 package design_pattern
 
 import parking.lot.entity.Customer
-import parking.lot.entity.parking.DigitalParking
-import parking.lot.entity.parking.FlatParking
-import parking.lot.entity.parking.ManualParking
-import parking.lot.entity.parking.Parking
-import parking.lot.entity.parking.ParkingMQAdapter
+import parking.lot.entity.parking.*
+import parking.lot.entity.vehicles.Truck
 import spock.lang.Specification
 
 class VehicleMQAdapterSpec extends Specification {
-    def manualParking = new ManualParking()
-    def digitalParking = new DigitalParking()
+    def manualParkingMessage = new ManualParking()
+    def digitalParkingMessage = new DigitalParking()
+    def smartParkingMessage = new SmartParking()
 
     def "should convert to Parking Using ParkingMQAdapter"(){
         given:
-        this.manualParking.setWhatKindOfCar("car")
-        this.manualParking.setWhoseCar("Sponge Bob")
-        this.manualParking.setId("AS9527")
-        this.manualParking.setParkingTime("2023-05-05")
 
-        this.digitalParking.setVehicleType("van")
-        this.digitalParking.setOwner(new Customer("patrick","Next To The Pineapple"))
-        this.digitalParking.setSerialNumber("number123")
-        this.digitalParking.setParkingTime("2023-05-05")
+        //============================= set up the input messages =============================//
+
+        this.manualParkingMessage.setWhatKindOfCar("car")
+        this.manualParkingMessage.setWhoseCar("Sponge Bob")
+        this.manualParkingMessage.setId("AS9527")
+        this.manualParkingMessage.setParkingTime("2023-05-05")
+
+        this.digitalParkingMessage.setVehicleType("van")
+        this.digitalParkingMessage.setOwner(new Customer("patrick","i000000"))
+        this.digitalParkingMessage.setSerialNumber("x000000")
+        this.digitalParkingMessage.setParkingTime("2023-05-05")
+
+        this.smartParkingMessage.setVehicle(new Truck("x000001"))
+        this.smartParkingMessage.setCustomer(new Customer("squid ward","i000001"))
+        this.smartParkingMessage.setParkingTime("2023-05-05")
+
+        //============================= set up the links =============================//
 
         def manualParkingLink = new HashMap<String,String>()
         manualParkingLink.put("vehicleType","whatKindOfCar")
@@ -36,25 +43,44 @@ class VehicleMQAdapterSpec extends Specification {
         digitalParkingLink.put("customerIdentification","identification")
         digitalParkingLink.put("parkingTime","parkingTime")
 
+        def smartParkingLink = new HashMap<String,String>()
+        smartParkingLink.put("plateNumber","plateNumber")
+        smartParkingLink.put("vehicleType","type")
+        smartParkingLink.put("customerName","name")
+        smartParkingLink.put("customerIdentification","identification")
+        smartParkingLink.put("parkingTime","parkingTime")
+
         when:
         def parkingMQAdapter = new ParkingMQAdapter<FlatParking>()
 
-        def manualFlatParking = parkingMQAdapter.filter(this.manualParking.toString(),manualParkingLink, FlatParking.class)
+        def manualFlatParking = parkingMQAdapter.filter(this.manualParkingMessage.toString(),manualParkingLink, FlatParking.class)
         manualFlatParking = manualFlatParking as FlatParking
         def manualParkingResult = manualFlatParking.toParking()
         manualParkingResult = manualParkingResult as Parking
 
-
-        def digitalFlatParking = parkingMQAdapter.filter(digitalParking.toString(),digitalParkingLink,FlatParking.class)
+        def digitalFlatParking = parkingMQAdapter.filter(digitalParkingMessage.toString(),digitalParkingLink,FlatParking.class)
         digitalFlatParking = digitalFlatParking as FlatParking
         def digitalParkingResult = digitalFlatParking.toParking()
         digitalParkingResult = digitalParkingResult as Parking
+
+        def smartFlatParking  = parkingMQAdapter.filter(smartParkingMessage.toString(),smartParkingLink,FlatParking.class)
+        smartFlatParking = smartFlatParking as FlatParking
+        def smartParkingResult = smartFlatParking.toParking()
+        smartParkingResult = smartParkingResult as Parking
 
         then:
         manualParkingResult.getOwner().getName() == "Sponge Bob"
         manualParkingResult.getVehicle().getPlateNumber() == "AS9527"
         manualParkingResult.getVehicle().getType() == "car"
 
+        digitalParkingResult.getOwner().getName() == "patrick"
+        digitalParkingResult.getOwner().getIdentification() == "i000000"
+        digitalParkingResult.getVehicle().getPlateNumber() == "x000000"
         digitalParkingResult.getVehicle().getType() == "van"
+
+        smartParkingResult.getOwner().getName() == "squid ward"
+        smartParkingResult.getOwner().getIdentification() == "i000001"
+        smartParkingResult.getVehicle().getPlateNumber() == "x000001"
+        smartParkingResult.getVehicle().getType() == "truck"
     }
 }

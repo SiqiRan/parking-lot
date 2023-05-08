@@ -6,16 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import parking.lot.entity.Customer;
 import parking.lot.entity.vehicles.Vehicle;
 
-import java.time.Instant;
-
 public class SmartParking {
     ObjectMapper objectMapper = new ObjectMapper();
-
     @JsonUnwrapped
     Customer customer;
     @JsonUnwrapped
     Vehicle vehicle;
-    Instant parkingTime;
+    String parkingTime;
 
     public Customer getCustomer() {
         return customer;
@@ -33,11 +30,11 @@ public class SmartParking {
         this.vehicle = vehicle;
     }
 
-    public Instant getParkingTime() {
+    public String getParkingTime() {
         return parkingTime;
     }
 
-    public void setParkingTime(Instant parkingTime) {
+    public void setParkingTime(String parkingTime) {
         this.parkingTime = parkingTime;
     }
 

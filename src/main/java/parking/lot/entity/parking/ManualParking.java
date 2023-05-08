@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class ManualParking {
     ObjectMapper objectMapper = new ObjectMapper();
-
     private String whatKindOfCar;
     private String id;
     private String whoseCar;
