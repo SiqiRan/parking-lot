@@ -5,6 +5,8 @@ import io.vavr.control.Option;
 import lombok.Getter;
 import lombok.Setter;
 import parking.lot.entity.parking.ParkingLot;
+import parking.lot.entity.recordModes.NormalPrint;
+import parking.lot.entity.recordModes.PrintMode;
 import parking.lot.entity.vehicles.Vehicle;
 
 import static parking.lot.utils.ParkingLotUtils.checkIfAvailable;
@@ -15,6 +17,8 @@ import static parking.lot.utils.ParkingLotUtils.checkIfAvailable;
 public class BasicValet implements Valet{
 
     protected List<ParkingLot> parkingLots;
+
+    private PrintMode printMode = new NormalPrint();
 
     public BasicValet() {
         this.parkingLots = List.empty();
@@ -44,6 +48,11 @@ public class BasicValet implements Valet{
         parkingLotToUse.setOccupiedPositions(parkingLotToUse.getOccupiedPositions() + 1);
         parkingLotToUse.setOccupationRate((double) ((float)parkingLotToUse.getOccupiedPositions()/parkingLotToUse.getCapacity()));
         return Option.of(vehicleToPark);
+    }
+
+    @Override
+    public String printParkingResult(Vehicle vehicle) {
+        return printMode.printParking(vehicle);
     }
 
     public Option<Vehicle> pickUp(String plateNumber){

@@ -1,4 +1,4 @@
-package parking.lot.entity.parking;
+package parking.lot.entity.records;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.Feature;
 
-public class ParkingMQAdapter<T> {
+public class ParkingAdapter<T> {
     public Object filter(String strJson, Map<String, String> link, Class<T> targetClass) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         return filter(JSON.parseObject(strJson, Map.class, Feature.SupportAutoType), link, targetClass);
     }

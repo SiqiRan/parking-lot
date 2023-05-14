@@ -1,14 +1,19 @@
 package design_pattern
 
 import parking.lot.entity.Customer
-import parking.lot.entity.parking.*
+import parking.lot.entity.records.DigitalParkingRecord
+import parking.lot.entity.records.FlatParkingRecord
+import parking.lot.entity.records.ManualParkingRecord
+import parking.lot.entity.records.ParkingAdapter
+import parking.lot.entity.records.ParkingRecord
+import parking.lot.entity.records.SmartParkingRecord
 import parking.lot.entity.vehicles.Truck
 import spock.lang.Specification
 
 class VehicleMQAdapterSpec extends Specification {
-    def manualParkingMessage = new ManualParking()
-    def digitalParkingMessage = new DigitalParking()
-    def smartParkingMessage = new SmartParking()
+    def manualParkingMessage = new ManualParkingRecord()
+    def digitalParkingMessage = new DigitalParkingRecord()
+    def smartParkingMessage = new SmartParkingRecord()
 
     def "should convert to Parking Using ParkingMQAdapter"(){
         given:
@@ -51,22 +56,22 @@ class VehicleMQAdapterSpec extends Specification {
         smartParkingLink.put("parkingTime","parkingTime")
 
         when:
-        def parkingMQAdapter = new ParkingMQAdapter<FlatParking>()
+        def parkingMQAdapter = new ParkingAdapter<FlatParkingRecord>()
 
-        def manualFlatParking = parkingMQAdapter.filter(this.manualParkingMessage.toString(),manualParkingLink, FlatParking.class)
-        manualFlatParking = manualFlatParking as FlatParking
+        def manualFlatParking = parkingMQAdapter.filter(this.manualParkingMessage.toString(),manualParkingLink, FlatParkingRecord.class)
+        manualFlatParking = manualFlatParking as FlatParkingRecord
         def manualParkingResult = manualFlatParking.toParking()
-        manualParkingResult = manualParkingResult as Parking
+        manualParkingResult = manualParkingResult as ParkingRecord
 
-        def digitalFlatParking = parkingMQAdapter.filter(digitalParkingMessage.toString(),digitalParkingLink,FlatParking.class)
-        digitalFlatParking = digitalFlatParking as FlatParking
+        def digitalFlatParking = parkingMQAdapter.filter(digitalParkingMessage.toString(),digitalParkingLink,FlatParkingRecord.class)
+        digitalFlatParking = digitalFlatParking as FlatParkingRecord
         def digitalParkingResult = digitalFlatParking.toParking()
-        digitalParkingResult = digitalParkingResult as Parking
+        digitalParkingResult = digitalParkingResult as ParkingRecord
 
-        def smartFlatParking  = parkingMQAdapter.filter(smartParkingMessage.toString(),smartParkingLink,FlatParking.class)
-        smartFlatParking = smartFlatParking as FlatParking
+        def smartFlatParking  = parkingMQAdapter.filter(smartParkingMessage.toString(),smartParkingLink,FlatParkingRecord.class)
+        smartFlatParking = smartFlatParking as FlatParkingRecord
         def smartParkingResult = smartFlatParking.toParking()
-        smartParkingResult = smartParkingResult as Parking
+        smartParkingResult = smartParkingResult as ParkingRecord
 
         then:
         manualParkingResult.getOwner().getName() == "Sponge Bob"

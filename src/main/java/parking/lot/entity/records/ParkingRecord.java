@@ -1,4 +1,4 @@
-package parking.lot.entity.parking;
+package parking.lot.entity.records;
 
 import parking.lot.entity.Customer;
 import parking.lot.entity.vehicles.Vehicle;
@@ -8,21 +8,21 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class Parking {
+public class ParkingRecord {
     private Long id;
     private Vehicle vehicle;
     private Customer owner;
     private Instant parkingTime;
     private double parkingFee;
 
-    public Parking(Vehicle vehicle, Customer owner, Instant parkingTime) {
+    public ParkingRecord(Vehicle vehicle, Customer owner, Instant parkingTime) {
         this.vehicle = vehicle;
         this.owner = owner;
         this.parkingTime = parkingTime;
         this.parkingFee = 0;
     }
 
-    public Parking(){
+    public ParkingRecord(){
 
     }
 

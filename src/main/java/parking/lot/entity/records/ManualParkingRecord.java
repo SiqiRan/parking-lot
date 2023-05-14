@@ -1,4 +1,4 @@
-package parking.lot.entity.parking;
+package parking.lot.entity.records;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * This is to simulate parking recorded in handwriting.
  */
-public class ManualParking {
+public class ManualParkingRecord {
     ObjectMapper objectMapper = new ObjectMapper();
     private String whatKindOfCar;
     private String id;

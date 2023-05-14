@@ -3,7 +3,7 @@ package parking.lot.controller;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
-import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.vehicles.Vehicle;
 import reactor.core.publisher.Mono;
 
 @Repository
@@ -16,19 +16,19 @@ public class ParkingReactiveRepository {
         this.webClient = WebClient.create(baseUrl);
     }
 
-    public Mono<Car> getCarById(Long carId){
+    public Mono<Vehicle> getVehicleById(Long carId){
         return webClient
                 .get()
                 .uri(uriBuilder -> uriBuilder.path("/"+carId).build())
                 .retrieve()
-                .bodyToMono(Car.class);
+                .bodyToMono(Vehicle.class);
     }
 
-    public Mono<Car> parkCar(Car car) {
+    public Mono<Vehicle> park(Vehicle vehicle) {
         return webClient
                 .post()
-                .bodyValue(car)
+                .bodyValue(vehicle)
                 .retrieve()
-                .bodyToMono(Car.class);
+                .bodyToMono(Vehicle.class);
     }
 }

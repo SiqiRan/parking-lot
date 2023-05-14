@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.vehicles.Vehicle;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -14,14 +15,14 @@ public class ParkingController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<Car> getCarById(@PathVariable Long id){
-        return parkingReactiveService.getCarById(id);
+    public Mono<Vehicle> getVehicleById(@PathVariable Long id){
+        return parkingReactiveService.getVehicleById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Car> postCar(@RequestBody Car car){
-        return parkingReactiveService.parkCar(car);
+    public Mono<Vehicle> park(@RequestBody Car car){
+        return parkingReactiveService.park(car);
     }
 }
 

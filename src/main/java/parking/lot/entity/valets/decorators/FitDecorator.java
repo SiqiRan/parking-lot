@@ -44,4 +44,9 @@ public abstract class FitDecorator implements Valet {
     public Option<Vehicle> parkToParkingLot(Vehicle vehicleToPark, ParkingLot parkingLotToUse){
         return  valet.parkToParkingLot(vehicleToPark,parkingLotToUse);
     }
+
+    @Override
+    public String printParkingResult(Vehicle vehicle){
+        return valet.printParkingResult(vehicle);
+    }
 }

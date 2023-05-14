@@ -1,40 +1,33 @@
-package parking.lot.entity.parking;
+package parking.lot.entity.records;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import parking.lot.entity.Customer;
+import parking.lot.entity.vehicles.Vehicle;
 
-public class DigitalParking {
+public class SmartParkingRecord {
     ObjectMapper objectMapper = new ObjectMapper();
     @JsonUnwrapped
-    private Customer owner;
-    private String vehicleType;
-    private String serialNumber;
-    private String parkingTime;
+    Customer customer;
+    @JsonUnwrapped
+    Vehicle vehicle;
+    String parkingTime;
 
-    public Customer getOwner() {
-        return owner;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setOwner(Customer owner) {
-        this.owner = owner;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getParkingTime() {

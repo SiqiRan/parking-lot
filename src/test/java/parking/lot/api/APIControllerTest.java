@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import parking.lot.controller.ParkingReactiveRepository;
 import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.vehicles.Vehicle;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -39,13 +40,13 @@ class APIControllerTest {
     }
     @Test
     void shouldPickUpACarWhenGivenCorrectId() throws JsonProcessingException {
-        Car mockCar = new Car("1");
+        Vehicle mockCar = new Car("1");
         ObjectMapper objectMapper = new ObjectMapper();
         mockBackEnd.enqueue(new MockResponse()
                 .setBody(objectMapper.writeValueAsString(mockCar))
                 .addHeader("Content-Type", "application/json"));
 
-        Mono<Car> carMono = parkingReactiveRepository.getCarById(2L);
+        Mono<Vehicle> carMono = parkingReactiveRepository.getVehicleById(2L);
 
         StepVerifier.create(carMono)
                 .expectNextMatches(car -> car.getType()
@@ -55,13 +56,13 @@ class APIControllerTest {
 
     @Test
     void shouldParkCarWhenGivenEnoughPositions() throws JsonProcessingException {
-        Car mockCar = new Car("1");
+        Vehicle mockCar = new Car("1");
         ObjectMapper objectMapper = new ObjectMapper();
         mockBackEnd.enqueue(new MockResponse()
                 .setBody(objectMapper.writeValueAsString(mockCar))
                 .addHeader("Content-Type", "application/json"));
 
-        Mono<Car> carMono = parkingReactiveRepository.parkCar(mockCar);
+        Mono<Vehicle> carMono = parkingReactiveRepository.park(mockCar);
 
         StepVerifier.create(carMono)
                 .expectNextMatches(car -> car.getType()

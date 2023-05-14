@@ -2,7 +2,7 @@ package parking.lot.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import parking.lot.entity.vehicles.Car;
+import parking.lot.entity.vehicles.Vehicle;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -10,11 +10,11 @@ import reactor.core.publisher.Mono;
 public class ParkingReactiveService {
     ParkingReactiveRepository parkingReactiveRepository;
 
-    public Mono<Car> getCarById(Long id) {
-        return parkingReactiveRepository.getCarById(id);
+    public Mono<Vehicle> getVehicleById(Long id) {
+        return parkingReactiveRepository.getVehicleById(id);
     }
 
-    public Mono<Car> parkCar(Car car) {
-        return parkingReactiveRepository.parkCar(car);
+    public Mono<Vehicle> park(Vehicle vehicle) {
+        return parkingReactiveRepository.park(vehicle);
     }
 }

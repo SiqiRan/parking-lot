@@ -1,4 +1,4 @@
-package parking.lot.entity.parking;
+package parking.lot.entity.records;
 
 import parking.lot.entity.Customer;
 import parking.lot.entity.vehicles.Vehicle;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class FlatParking {
+public class FlatParkingRecord {
     private Long id;
     private String vehicleType;
     private String plateNumber;
@@ -75,7 +75,7 @@ public class FlatParking {
         this.vehicleType = vehicleType;
     }
 
-    public Parking toParking(){
-        return new Parking(new Vehicle(this.vehicleType,this.plateNumber), new Customer(this.customerName,this.customerIdentification),this.parkingTime);
+    public ParkingRecord toParking(){
+        return new ParkingRecord(new Vehicle(this.vehicleType,this.plateNumber), new Customer(this.customerName,this.customerIdentification),this.parkingTime);
     }
 }

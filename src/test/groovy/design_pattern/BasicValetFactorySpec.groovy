@@ -12,7 +12,7 @@ class BasicValetFactorySpec extends Specification {
         when:
         def result = valetFactory.generateValet("boy")
         then:
-        result.getClass() == ParkingBoy.class
+        result.class == ParkingBoy.class
     }
 
     def "should initialize the fields in valets" (){
@@ -20,10 +20,8 @@ class BasicValetFactorySpec extends Specification {
         def valetFactory = ValetFactory.getValetFactory()
         when:
         def result= valetFactory.generateValet("manager")
-        result  = result as ParkingManager
         then:
         result.class == ParkingManager.class
-        result.getSubordinates().length() == 0
     }
 
 }

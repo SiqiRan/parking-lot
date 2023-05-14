@@ -18,4 +18,6 @@ public interface Valet {
     List<ParkingLot> getParkingLots();
 
     Option<Vehicle> parkToParkingLot(Vehicle vehicleToPark, ParkingLot parkingLotToUse);
+
+    String printParkingResult(Vehicle vehicle);
 }
